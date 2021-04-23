@@ -10,18 +10,18 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="计算机网络基础复习（一）">
+  <meta name="description" content="计算机网络基础复习（一） http和https的理解 TCP三次握手 TCP和UDP的区别 WebSocket的实现和应用 什么是WebSocket?">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="https://helishou.github.io/2021/04/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="计算机网络基础复习（一）">
+<meta property="og:description" content="计算机网络基础复习（一） http和https的理解 TCP三次握手 TCP和UDP的区别 WebSocket的实现和应用 什么是WebSocket?">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4835a2981d7944daa0165fb0a789b6b6~tplv-k3u1fbpfcp-watermark.image">
 <meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5ffda420396b4e7990f0264b6d82347d~tplv-k3u1fbpfcp-watermark.image">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190619211827564.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lleHVkZW5nemhpZGFv,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="2021-04-22T17:21:20.806Z">
-<meta property="article:modified_time" content="2021-04-23T06:25:39.186Z">
+<meta property="article:modified_time" content="2021-04-23T06:47:39.281Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4835a2981d7944daa0165fb0a789b6b6~tplv-k3u1fbpfcp-watermark.image">
@@ -895,7 +895,15 @@
     
   <div class="article-entry" itemprop="articleBody">
     
-    <p>计算机网络基础复习（一）<span id="more"></span></p>
+    <h2 id="计算机网络基础复习（一）"><a href="#计算机网络基础复习（一）" class="headerlink" title="计算机网络基础复习（一）"></a>计算机网络基础复习（一）</h2><ol>
+<li>http和https的理解</li>
+<li>TCP三次握手</li>
+<li>TCP和UDP的区别</li>
+<li>WebSocket的实现和应用</li>
+<li>什么是WebSocket?</li>
+</ol>
+<span id="more"></span>
+
 <h3 id="http和https的理解"><a href="#http和https的理解" class="headerlink" title="http和https的理解"></a>http和https的理解</h3><p>http是超文本传输协议，是互联网上应用最为广泛的一种网络协议，是一个客户端和服务器端请求和应答的标准，用于从WWW服务器传输超文本到本地浏览器的传输协议，它可以使浏览器更加高效，使网络传输减少。 <strong>而对于https，他是以安全为目标的http通道，是http的安全版，在http中加入了ssl层，https的安全基础是ssl。</strong></p>
 <p>http的连接很简单的，是无状态的，http传输的数据都是没有加密的，也就是明文的，网景公司设置了ssl协议来对http协议传输的数据进行加密处理，<strong>所以说https协议是由http和ssl协议构建的可进行加密传输和身份认证的网络协议，比http协议的安全性更高。</strong></p>
 <p>https协议是需要证书的，费用较高，http是超文本传输协议，信息是明文传输，https是具有安全性的ssl加密传输协议，使用不同的链接方式，端口不同，<strong>一般来说，http协议的端口是80，而https的端口为443。</strong></p>
@@ -1093,7 +1101,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#http%E5%92%8Chttps%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">http和https的理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-number">2.</span> <span class="toc-text">TCP三次握手</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP%E5%92%8CUDP%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">3.</span> <span class="toc-text">TCP和UDP的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebSocket%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%92%8C%E5%BA%94%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">WebSocket的实现和应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFWebSocket"><span class="toc-number">4.1.</span> <span class="toc-text">1.什么是WebSocket?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-WebSocket%E6%98%AF%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E5%8D%8F%E8%AE%AE%EF%BC%8C%E5%85%B7%E4%BD%93%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F"><span class="toc-number">4.2.</span> <span class="toc-text">2.WebSocket是什么样的协议，具体有什么优点？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Websocket%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">4.3.</span> <span class="toc-text">3. Websocket的作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-WebSocket%E4%B8%8ETCP%EF%BC%8CHTTP%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">4.4.</span> <span class="toc-text">4. WebSocket与TCP，HTTP的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Websocket%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">4.4.1.</span> <span class="toc-text">Websocket的作用</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Ajax%E8%BD%AE%E8%AF%A2%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%9F"><span class="toc-number">4.4.1.1.</span> <span class="toc-text">Ajax轮询怎么实现的？</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Websocket%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84"><span class="toc-number">4.4.1.2.</span> <span class="toc-text">Websocket怎么工作的</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-WebSocket%E4%B8%8ETCP%EF%BC%8CHTTP%E7%9A%84%E5%85%B3%E7%B3%BB-1"><span class="toc-number">4.5.</span> <span class="toc-text">4. WebSocket与TCP，HTTP的关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-websocket%E5%89%8D%E5%90%8E%E7%AB%AF%E9%80%9A%E4%BF%A1"><span class="toc-number">4.6.</span> <span class="toc-text">5. websocket前后端通信</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">计算机网络基础复习（一）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#http%E5%92%8Chttps%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-number">1.1.</span> <span class="toc-text">http和https的理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-number">1.2.</span> <span class="toc-text">TCP三次握手</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP%E5%92%8CUDP%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.3.</span> <span class="toc-text">TCP和UDP的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebSocket%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%92%8C%E5%BA%94%E7%94%A8"><span class="toc-number">1.4.</span> <span class="toc-text">WebSocket的实现和应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFWebSocket"><span class="toc-number">1.4.1.</span> <span class="toc-text">1.什么是WebSocket?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-WebSocket%E6%98%AF%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E5%8D%8F%E8%AE%AE%EF%BC%8C%E5%85%B7%E4%BD%93%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F"><span class="toc-number">1.4.2.</span> <span class="toc-text">2.WebSocket是什么样的协议，具体有什么优点？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Websocket%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">1.4.3.</span> <span class="toc-text">3. Websocket的作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-WebSocket%E4%B8%8ETCP%EF%BC%8CHTTP%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.4.4.</span> <span class="toc-text">4. WebSocket与TCP，HTTP的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Websocket%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">1.4.4.1.</span> <span class="toc-text">Websocket的作用</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Ajax%E8%BD%AE%E8%AF%A2%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%9F"><span class="toc-number">1.4.4.1.1.</span> <span class="toc-text">Ajax轮询怎么实现的？</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Websocket%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84"><span class="toc-number">1.4.4.1.2.</span> <span class="toc-text">Websocket怎么工作的</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-WebSocket%E4%B8%8ETCP%EF%BC%8CHTTP%E7%9A%84%E5%85%B3%E7%B3%BB-1"><span class="toc-number">1.4.5.</span> <span class="toc-text">4. WebSocket与TCP，HTTP的关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-websocket%E5%89%8D%E5%90%8E%E7%AB%AF%E9%80%9A%E4%BF%A1"><span class="toc-number">1.4.6.</span> <span class="toc-text">5. websocket前后端通信</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
