@@ -10,27 +10,27 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="什么是 HTTP 缓存HTTP 缓存可以说是HTTP性能优化中简单高效的一种优化方式了，缓存是一种保存资源副本并在下次请求时直接使用该副本的技术，当 web 缓存发现请求的资源已经被存储，它会拦截请求，返回该资源的拷贝，而不会去源服务器重新下载。 一个优秀的缓存策略可以缩短网页请求资源的距离，减少延迟，节省网络流量，并且由于缓存文件可以重复利用，降低网络负荷，提高客户端响应。 所以，学会利用">
+  <meta name="description" content="什么是 HTTP 缓存">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机网络基础复习（二）">
 <meta property="og:url" content="https://helishou.github.io/2021/04/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(%E4%BA%8C)/index.html">
 <meta property="og:site_name" content="河狸兽的博客">
-<meta property="og:description" content="什么是 HTTP 缓存HTTP 缓存可以说是HTTP性能优化中简单高效的一种优化方式了，缓存是一种保存资源副本并在下次请求时直接使用该副本的技术，当 web 缓存发现请求的资源已经被存储，它会拦截请求，返回该资源的拷贝，而不会去源服务器重新下载。 一个优秀的缓存策略可以缩短网页请求资源的距离，减少延迟，节省网络流量，并且由于缓存文件可以重复利用，降低网络负荷，提高客户端响应。 所以，学会利用">
+<meta property="og:description" content="什么是 HTTP 缓存">
 <meta property="og:locale">
-<meta property="og:image" content="https://helishou.github.io/public/img/article/image-20210423164010233.png">
-<meta property="og:image" content="https://helishou.github.io/public/img/article/image-20210423164029977.png">
-<meta property="og:image" content="https://helishou.github.io/public/img/article/image-20210423164141104.png">
-<meta property="og:image" content="https://helishou.github.io/public/img/image-20210423164340256.png">
-<meta property="og:image" content="https://helishou.github.io/public/img/image-20210423164356297.png">
-<meta property="og:image" content="https://helishou.github.io/public/img/image-20210423164409471.png">
-<meta property="og:image" content="https://helishou.github.io/public/img/image-20210423164459784.png">
-<meta property="og:image" content="https://helishou.github.io/public/img/image-20210423164511879.png">
-<meta property="og:image" content="https://helishou.github.io/public/img/article/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(%E4%BA%8C)/image-20210423165024209.png">
+<meta property="og:image" content="https://helishou.github.io/.io//image-20210423164010233.png">
+<meta property="og:image" content="https://helishou.github.io/.io//image-20210423164029977.png">
+<meta property="og:image" content="https://helishou.github.io/.io//image-20210423164141104.png">
+<meta property="og:image" content="https://helishou.github.io/.io//image-20210423164340256.png">
+<meta property="og:image" content="https://helishou.github.io/.io//image-20210423164356297.png">
+<meta property="og:image" content="https://helishou.github.io/.io//image-20210423164409471.png">
+<meta property="og:image" content="https://helishou.github.io/.io//image-20210423164459784.png">
+<meta property="og:image" content="https://helishou.github.io/.io//image-20210423164511879.png">
+<meta property="og:image" content="https://helishou.github.io/.io//image-20210423165024209.png">
 <meta property="article:published_time" content="2021-04-23T07:46:00.724Z">
-<meta property="article:modified_time" content="2021-04-23T08:51:55.140Z">
+<meta property="article:modified_time" content="2021-04-23T12:46:39.760Z">
 <meta property="article:author" content="helishou">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://helishou.github.io/public/img/article/image-20210423164010233.png">
+<meta name="twitter:image" content="https://helishou.github.io/.io//image-20210423164010233.png">
   
     <link rel="alternative" href="/atom.xml" title="河狸兽的博客" type="application/atom+xml">
   
@@ -265,7 +265,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">2.6k字</span>
+      <span class="post-count">3.3k字</span>
     </span>
   </span>
 
@@ -274,7 +274,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">9分</span>
+      <span class="post-count">11分</span>
     </span>
   </span>
 </div>
@@ -285,9 +285,9 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <span id="more"></span>
+    <h1 id="什么是-HTTP-缓存"><a href="#什么是-HTTP-缓存" class="headerlink" title="什么是 HTTP 缓存"></a>什么是 HTTP 缓存</h1><span id="more"></span>
 
-<h1 id="什么是-HTTP-缓存"><a href="#什么是-HTTP-缓存" class="headerlink" title="什么是 HTTP 缓存"></a>什么是 HTTP 缓存</h1><p>HTTP 缓存可以说是HTTP性能优化中简单高效的一种优化方式了，缓存是一种保存资源副本并在下次请求时直接使用该副本的技术，当 web 缓存发现请求的资源已经被存储，它会拦截请求，返回该资源的拷贝，而不会去源服务器重新下载。</p>
+<p>HTTP 缓存可以说是HTTP性能优化中简单高效的一种优化方式了，缓存是一种保存资源副本并在下次请求时直接使用该副本的技术，当 web 缓存发现请求的资源已经被存储，它会拦截请求，返回该资源的拷贝，而不会去源服务器重新下载。</p>
 <p>一个优秀的缓存策略可以缩短网页请求资源的距离，减少延迟，节省网络流量，并且由于缓存文件可以重复利用，降低网络负荷，提高客户端响应。</p>
 <p>所以，学会利用 HTTP 缓存是很有必要的。</p>
 <p>在此，我会向大家系统的介绍HTTP缓存机制，期望对各位正确的理解HTTP缓存有所帮助。</p>
@@ -302,19 +302,15 @@
 <p>响应头中相关字段为Expires、Cache-Control、Last-Modified、Etag。</p>
 <p>HTTP缓存的类型很多，根据是否需要重新向服务器发起请求来分类包括两种：强制缓存和对比缓存</p>
 <p>假设浏览器有一个缓存数据库用于本地缓存，先看看浏览器请求资源的情况：</p>
-<p><img src="/../../public/img/article/image-20210423164010233.png" alt="image-20210423164010233"></p>
+<p><img src="/.io//image-20210423164010233.png" alt="image-20210423164010233"></p>
 <h2 id="强制缓存"><a href="#强制缓存" class="headerlink" title="强制缓存"></a>强制缓存</h2><p>在浏览器已经缓存数据的情况下，使用强制缓存去请求数据的流程是这样的：</p>
-<p><img src="/../../public/img/article/image-20210423164029977.png" alt="image-20210423164029977"></p>
+<p><img src="/.io//image-20210423164029977.png" alt="image-20210423164029977"></p>
 <p>从流程图可以看到，强制缓存，在缓存数据未失效的情况下，可以直接使用缓存数据，不需要再请求服务器，那么浏览器是如何判断缓存数据是否失效呢？</p>
 <p>对于强制缓存来说，响应header中会有两个字段来标明失效规则（Expires/Cache-Control）</p>
-<p><strong>Expires：</strong></p>
-<p>Expires 是 HTTP1.0 的产物了，现在默认浏览器均默认使用 HTTP 1.1，所以它的作用基本忽略。但是很多网站还是对它做了兼容。它的值为服务端返回的到期时间，即下一次请求时，请求时间小于服务端返回的到期时间，直接使用缓存数据。</p>
+<h3 id="Expires："><a href="#Expires：" class="headerlink" title="Expires："></a><strong>Expires：</strong></h3><p>Expires 是 HTTP1.0 的产物了，现在默认浏览器均默认使用 HTTP 1.1，所以它的作用基本忽略。但是很多网站还是对它做了兼容。它的值为服务端返回的到期时间，即下一次请求时，请求时间小于服务端返回的到期时间，直接使用缓存数据。</p>
 <p>但有一个问题是到期时间是由服务端生成的，如果客户端时间跟服务器时间不一致，这就会导致缓存<em>命中</em>的误差。</p>
 <p>在 HTTP 1.1 的版本，Expires 被 Cache-Control 替代。</p>
-<ul>
-<li><strong>Cache-Control：</strong></li>
-</ul>
-<p>Cache-Control 是最重要的规则。常见的取值有 private、public、no-cache、max-age，no-store，默认为 private。</p>
+<h3 id="Cache-Control："><a href="#Cache-Control：" class="headerlink" title="Cache-Control："></a><strong>Cache-Control：</strong></h3><p>Cache-Control 是最重要的规则。常见的取值有 private、public、no-cache、max-age，no-store，默认为 private。</p>
 <ol>
 <li><p>max-age：用来设置资源（representations）可以被缓存多长时间，单位为秒；</p>
 </li>
@@ -335,40 +331,34 @@
 </ol>
 <p>那么这个资源会被缓存31536000秒（365天），在365天内再次请求这条数据，都会直接获取缓存数据库中的数据，直接使用。</p>
 <p>那么我们试试再次访问资源，会有以下的响应：</p>
-<p><img src="/../../public/img/article/image-20210423164141104.png" alt="image-20210423164141104"></p>
+<p><img src="/.io//image-20210423164141104.png" alt="image-20210423164141104"></p>
 <p>可以看到HTTP状态码是200，Size这个字段显示：disk cache，说明浏览器确实走了强制缓存，没有再跟浏览器交互。</p>
 <p>我们上面说了，不同的访问/刷新手段，会使浏览器使用不同的缓存策略，要让浏览器走强制缓存对请求方式有一个要求: 在URI输入栏中输入然后回车/通过书签访问。</p>
 <h2 id="对比缓存"><a href="#对比缓存" class="headerlink" title="对比缓存"></a>对比缓存</h2><p>在浏览器已经缓存数据的情况下，使用对比缓存去请求数据的流程是这样的。</p>
-<p><img src="/../../public/img/image-20210423164340256.png" alt="image-20210423164340256"></p>
+<p><img src="/.io//image-20210423164340256.png" alt="image-20210423164340256"></p>
 <p>有同学可能会问，基于对比缓存的流程下，不管是否使用缓存，都需要向服务器发送请求，那么还用缓存干什么？</p>
 <p>这个问题，我们现在来探讨一下。</p>
 <p>对比缓存，顾名思义，需要进行比较判断是否可以使用缓存。</p>
 <p>浏览器<em>第一</em>次请求数据时，服务器会将缓存标识与数据一起返回给浏览器，浏览器将二者备份至缓存数据库中。</p>
 <p>当浏览器再次请求数据时，浏览器将备份的缓存标识发送给服务器，服务器根据缓存标识进行判断，判断成功后，返回304状态码，通知客户端比较成功，可以使用缓存数据。</p>
 <p>举个例子，<em>第一</em>次访问：</p>
-<p><img src="/../../public/img/image-20210423164356297.png" alt="image-20210423164356297"></p>
+<p><img src="/.io//image-20210423164356297.png" alt="image-20210423164356297"></p>
 <p>第二次访问：</p>
-<p><img src="/../../public/img/image-20210423164409471.png" alt="image-20210423164409471"></p>
-<ul>
-<li><strong>Last-Modified / If-Modified-Since</strong></li>
-</ul>
-<p>服务器响应请求时，会告诉浏览器一个告诉浏览器资源的<em>最后</em>修改时间：Last-Modified，浏览器之后再请求的时候，会带上一个头：If-Modified-Since，这个值就是服务器上一次给的 Last-Modified 的时间，服务器会比对资源当前<em>最后</em>的修改时间，如果大于If-Modified-Since，则说明资源修改过了，浏览器不能再使用缓存，否则浏览器可以继续使用缓存，并返回304状态码</p>
-<ul>
-<li><strong>Etag  /  If-None-Match（优先级高于Last-Modified  /  If-Modified-Since）</strong></li>
-</ul>
-<p>服务器响应请求时，通过Etag头部告诉浏览器当前资源在服务器的<em>唯一</em>标识（生成规则由服务器决定），浏览器再次请求时，就会带上一个头If-None-Match，这个值就是服务器上一次给的Etag的值，服务器比对一下资源当前的Etag是否跟If-None-Match一致，不一致则说明资源修改过了，浏览器不能再使用缓存，否则浏览器可以继续使用缓存，并返回304状态码。</p>
+<p><img src="/.io//image-20210423164409471.png" alt="image-20210423164409471"></p>
+<h3 id="Last-Modified-If-Modified-Since"><a href="#Last-Modified-If-Modified-Since" class="headerlink" title="Last-Modified / If-Modified-Since"></a><strong>Last-Modified / If-Modified-Since</strong></h3><p>服务器响应请求时，会告诉浏览器一个告诉浏览器资源的<em>最后</em>修改时间：Last-Modified，浏览器之后再请求的时候，会带上一个头：If-Modified-Since，这个值就是服务器上一次给的 Last-Modified 的时间，服务器会比对资源当前<em>最后</em>的修改时间，如果大于If-Modified-Since，则说明资源修改过了，浏览器不能再使用缓存，否则浏览器可以继续使用缓存，并返回304状态码</p>
+<h3 id="Etag-If-None-Match（优先级高于Last-Modified-If-Modified-Since）"><a href="#Etag-If-None-Match（优先级高于Last-Modified-If-Modified-Since）" class="headerlink" title="Etag  /  If-None-Match（优先级高于Last-Modified  /  If-Modified-Since）"></a><strong>Etag  /  If-None-Match（优先级高于Last-Modified  /  If-Modified-Since）</strong></h3><p>服务器响应请求时，通过Etag头部告诉浏览器当前资源在服务器的<em>唯一</em>标识（生成规则由服务器决定），浏览器再次请求时，就会带上一个头If-None-Match，这个值就是服务器上一次给的Etag的值，服务器比对一下资源当前的Etag是否跟If-None-Match一致，不一致则说明资源修改过了，浏览器不能再使用缓存，否则浏览器可以继续使用缓存，并返回304状态码。</p>
 <p>看个例子：<em>第一</em>次请求，服务器的响应头包含了：</p>
-<p><img src="/../../public/img/image-20210423164459784.png" alt="image-20210423164459784"></p>
+<p><img src="/.io//image-20210423164459784.png" alt="image-20210423164459784"></p>
 <p>第二次请求，浏览器的请求头</p>
-<p><img src="/../../public/img/image-20210423164511879.png" alt="image-20210423164511879"></p>
+<p><img src="/.io//image-20210423164511879.png" alt="image-20210423164511879"></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我们再看一下HTTP缓存的一个总概流程图：</p>
-<p><img src="/../../public/img/article/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(%E4%BA%8C)/image-20210423165024209.png" alt="image-20210423165024209"></p>
+<p><img src="/.io//image-20210423165024209.png" alt="image-20210423165024209"></p>
 <ul>
 <li>HTTP缓存主要分强制缓存和对比缓存</li>
 <li>强制缓存的 HTTP 相关头部 Cache-Control，Exipres（HTTP1.0），浏览器直接读本地缓存，不会再跟服务器端交互，状态码 200。</li>
 <li>对比缓存的 HTTP 相关头部 Last-Modified / If-Modified-Since， Etag  /  If-None-Match (优先级比Last-Modified / If-Modified-Since高)，每次请求需要让服务器判断一下资源是否更新过，从而决定浏览器是否使用缓存，如果是，则返回304，否则重新完整响应。</li>
 </ul>
-<h2 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h2><p>最后复习一下状态码</p>
+<h1 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h1><p>最后复习一下状态码</p>
 <p><strong>100 Continue 继续。</strong></p>
 <p>客户端应继续其请求</p>
 <p><strong>101 Switching Protocols 切换协议。</strong></p>
@@ -415,6 +405,55 @@
 <p>充当网关或代理的服务器，未及时从远端服务器获取请求</p>
 <p><strong>505 HTTP Version not supported</strong></p>
 <p>服务器不支持请求的 HTTP 协议的版本，无法完成处理</p>
+<h1 id="http-常用请求头"><a href="#http-常用请求头" class="headerlink" title="http 常用请求头"></a>http 常用请求头</h1><p><strong>Accept</strong></p>
+<p>可接受的响应内容类型（Content-Types）。</p>
+<p><strong>Accept-Charset</strong></p>
+<p>可接受的字符集</p>
+<p><strong>Accept-Encoding</strong></p>
+<p>可接受的响应内容的编码方式。</p>
+<p><strong>Accept-Language</strong></p>
+<p>可接受的响应内容语言列表。</p>
+<p><strong>Accept-Datetime</strong></p>
+<p>可接受的按照时间来表示的响应内容版本</p>
+<p><strong>Authorization</strong></p>
+<p>用于表示 HTTP 协议中需要认证资源的认证信息</p>
+<p><strong>Cache-Control</strong></p>
+<p>用来指定当前的请求/回复中的，是否使用缓存机制。</p>
+<p><strong>Connection</strong></p>
+<p>客户端（浏览器）想要优先使用的连接类型</p>
+<p><strong>Cookie</strong></p>
+<p>由之前服务器通过Set-Cookie设置的一个HTTP协议Cookie</p>
+<p><strong>Content-Length</strong></p>
+<p>以 8 进制表示的请求体的长度</p>
+<p><strong>Content-MD5</strong></p>
+<p>请求体的内容的二进制 MD5 散列值（数字签名），以 Base64 编码的结果</p>
+<p><strong>Content-Type</strong></p>
+<p>请求体的 MIME 类型 （用于 POST 和 PUT 请求中）</p>
+<p><strong>Expect</strong></p>
+<p>表示客户端要求服务器做出特定的行为</p>
+<p><strong>From</strong></p>
+<p>发起此请求的用户的邮件地址</p>
+<p><strong>If-Modified-Since</strong></p>
+<p>允许在对应的资源未被修改的情况下返回 304 未修改</p>
+<p><strong>If-None-Match</strong></p>
+<p>允许在对应的内容未被修改的情况下返回 304 未修改（ 304 Not Modified ），参考 超文本传输协议 的实体标记</p>
+<p><strong>If-Range</strong></p>
+<p>如果该实体未被修改过，则向返回所缺少的那一个或多个部分。否 则，返回整个新的实体</p>
+<p><strong>If-Unmodified-Since</strong></p>
+<p>仅当该实体自某个特定时间以来未被修改的情况下，才发送回应。</p>
+<p><strong>Max-Forwards</strong></p>
+<p>限制该消息可被代理及网关转发的次数。</p>
+<p><strong>Range</strong></p>
+<p>表示请求某个实体的一部分，字节偏移以 0 开始。</p>
+<p><strong>User-Agent</strong></p>
+<p>浏览器的身份标识字符串</p>
+<p><strong>Upgrade</strong></p>
+<p>要求服务器升级到一个高版本协议。</p>
+<h1 id="每日三题"><a href="#每日三题" class="headerlink" title="每日三题"></a>每日三题</h1><h2 id="在移动端如何解决点击前进或者后退按钮不刷新的问题？"><a href="#在移动端如何解决点击前进或者后退按钮不刷新的问题？" class="headerlink" title="在移动端如何解决点击前进或者后退按钮不刷新的问题？"></a>在移动端如何解决点击前进或者后退按钮不刷新的问题？</h2><p>​    监听pageshow事件</p>
+<h2 id="使用flex实现一行显示固定几块，强制换行且均匀分布"><a href="#使用flex实现一行显示固定几块，强制换行且均匀分布" class="headerlink" title="使用flex实现一行显示固定几块，强制换行且均匀分布"></a>使用flex实现一行显示固定几块，强制换行且均匀分布</h2><p>​    盒子百分比(flex-basis: 33%)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">---css</span><br><span class="line">.mycards&#123; &#x2F;&#x2F; 大盒子</span><br><span class="line">  width: 98%;</span><br><span class="line">  display: flex;</span><br><span class="line">  flex-wrap: wrap;</span><br><span class="line">  justify-content: space-between;</span><br><span class="line">&#125;</span><br><span class="line">.card_item&#123; &#x2F;&#x2F; 每个item</span><br><span class="line">    flex: 1;</span><br><span class="line">    width: 33.3%;</span><br><span class="line">    min-width: 33.3%; &#x2F;&#x2F; 加入这两个后每个item的宽度就生效了</span><br><span class="line">    max-width: 33.3%; &#x2F;&#x2F; 加入这两个后每个item的宽度就生效了</span><br><span class="line">    height: 350px;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="什么是哨位值？"><a href="#什么是哨位值？" class="headerlink" title="什么是哨位值？"></a>什么是哨位值？</h2><p>​    哨位值 就是有特殊含义的值。<br>​    JavaScript 中字符串的 <code>indexOf</code> 方法返回的<code>-1</code>, 它不代表数值-1,含义是: 字符串未被找到.</p>
 
     
 
@@ -511,6 +550,15 @@
 
 <nav id="article-nav">
   
+    <a href="/2021/04/23/xxxx/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          xxxx
+        
+      </div>
+    </a>
+  
   
     <a href="/2021/04/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">计算机网络基础复习（一）</div>
@@ -540,7 +588,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-HTTP-%E7%BC%93%E5%AD%98"><span class="toc-number">1.</span> <span class="toc-text">什么是 HTTP 缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5"><span class="toc-number">1.1.</span> <span class="toc-text">缓存策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%BA%E5%88%B6%E7%BC%93%E5%AD%98"><span class="toc-number">1.2.</span> <span class="toc-text">强制缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94%E7%BC%93%E5%AD%98"><span class="toc-number">1.3.</span> <span class="toc-text">对比缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.4.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E7%A0%81"><span class="toc-number">1.5.</span> <span class="toc-text">状态码</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-HTTP-%E7%BC%93%E5%AD%98"><span class="toc-number">1.</span> <span class="toc-text">什么是 HTTP 缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5"><span class="toc-number">1.1.</span> <span class="toc-text">缓存策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%BA%E5%88%B6%E7%BC%93%E5%AD%98"><span class="toc-number">1.2.</span> <span class="toc-text">强制缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Expires%EF%BC%9A"><span class="toc-number">1.2.1.</span> <span class="toc-text">Expires：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cache-Control%EF%BC%9A"><span class="toc-number">1.2.2.</span> <span class="toc-text">Cache-Control：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94%E7%BC%93%E5%AD%98"><span class="toc-number">1.3.</span> <span class="toc-text">对比缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Last-Modified-If-Modified-Since"><span class="toc-number">1.3.1.</span> <span class="toc-text">Last-Modified &#x2F; If-Modified-Since</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Etag-If-None-Match%EF%BC%88%E4%BC%98%E5%85%88%E7%BA%A7%E9%AB%98%E4%BA%8ELast-Modified-If-Modified-Since%EF%BC%89"><span class="toc-number">1.3.2.</span> <span class="toc-text">Etag  &#x2F;  If-None-Match（优先级高于Last-Modified  &#x2F;  If-Modified-Since）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.4.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">状态码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#http-%E5%B8%B8%E7%94%A8%E8%AF%B7%E6%B1%82%E5%A4%B4"><span class="toc-number">3.</span> <span class="toc-text">http 常用请求头</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AF%8F%E6%97%A5%E4%B8%89%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">每日三题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E7%82%B9%E5%87%BB%E5%89%8D%E8%BF%9B%E6%88%96%E8%80%85%E5%90%8E%E9%80%80%E6%8C%89%E9%92%AE%E4%B8%8D%E5%88%B7%E6%96%B0%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-number">4.1.</span> <span class="toc-text">在移动端如何解决点击前进或者后退按钮不刷新的问题？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8flex%E5%AE%9E%E7%8E%B0%E4%B8%80%E8%A1%8C%E6%98%BE%E7%A4%BA%E5%9B%BA%E5%AE%9A%E5%87%A0%E5%9D%97%EF%BC%8C%E5%BC%BA%E5%88%B6%E6%8D%A2%E8%A1%8C%E4%B8%94%E5%9D%87%E5%8C%80%E5%88%86%E5%B8%83"><span class="toc-number">4.2.</span> <span class="toc-text">使用flex实现一行显示固定几块，强制换行且均匀分布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%93%A8%E4%BD%8D%E5%80%BC%EF%BC%9F"><span class="toc-number">4.3.</span> <span class="toc-text">什么是哨位值？</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
