@@ -10,18 +10,18 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="[Toc]">
+  <meta name="description" content="计算机网络基础复习（一）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://example.com/2021/04/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="[Toc]">
+<meta property="og:description" content="计算机网络基础复习（一）">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4835a2981d7944daa0165fb0a789b6b6~tplv-k3u1fbpfcp-watermark.image">
 <meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5ffda420396b4e7990f0264b6d82347d~tplv-k3u1fbpfcp-watermark.image">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190619211827564.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lleHVkZW5nemhpZGFv,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="2021-04-22T17:21:20.806Z">
-<meta property="article:modified_time" content="2021-04-22T17:21:20.936Z">
+<meta property="article:modified_time" content="2021-04-23T06:25:39.186Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4835a2981d7944daa0165fb0a789b6b6~tplv-k3u1fbpfcp-watermark.image">
@@ -121,6 +121,18 @@
 				
 			</div>
 		
+			
+			
+			
+			
+			<div>
+				<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="240" height="86" src="//music.163.com/outchain/player?type=2&id=1334445174&auto=1&height=66"></iframe>
+			</div>
+			
+				
+				<p style="font-size: 12px;">这似乎是首纯音乐，请尽情的欣赏它吧！<p>
+			
+		
 		</nav>
 	</header>		
 </div>
@@ -216,7 +228,7 @@
     
   <div class="article-entry" itemprop="articleBody">
     
-    <p>[Toc]<span id="more"></span></p>
+    <p>计算机网络基础复习（一）<span id="more"></span></p>
 <h3 id="http和https的理解"><a href="#http和https的理解" class="headerlink" title="http和https的理解"></a>http和https的理解</h3><p>http是超文本传输协议，是互联网上应用最为广泛的一种网络协议，是一个客户端和服务器端请求和应答的标准，用于从WWW服务器传输超文本到本地浏览器的传输协议，它可以使浏览器更加高效，使网络传输减少。 <strong>而对于https，他是以安全为目标的http通道，是http的安全版，在http中加入了ssl层，https的安全基础是ssl。</strong></p>
 <p>http的连接很简单的，是无状态的，http传输的数据都是没有加密的，也就是明文的，网景公司设置了ssl协议来对http协议传输的数据进行加密处理，<strong>所以说https协议是由http和ssl协议构建的可进行加密传输和身份认证的网络协议，比http协议的安全性更高。</strong></p>
 <p>https协议是需要证书的，费用较高，http是超文本传输协议，信息是明文传输，https是具有安全性的ssl加密传输协议，使用不同的链接方式，端口不同，<strong>一般来说，http协议的端口是80，而https的端口为443。</strong></p>
@@ -255,11 +267,11 @@
 </li>
 <li><p>长连接（long pull）是如何工作的 ？</p>
 <pre><code>       客户端：有没有新信息（Request）–第一次http请求开始
-  　　　服务端：没有信息，不作回应（时间一直的流逝。。。一直保持http连接， 当等到有消息的时候）
-  　       服务器端：给你xxxx（Response）–这时，第一次的http请求获得想要的结果，然后还要发起第二、三。。次http请求
-  　        客户端：有没有新消息（Request）–第二次http请求开始
-  　　     。。。。。
-  　　其缺点也是显而易见的，同ajax轮询一样，也是每次都要建立HTTP连接，也都是被动的。而且这种方法对服务器的并行要求比较大，因为在没有消息的时候，连接照样保持，而这时需要其它信息是又要建立新的连接（就连接保持中）
+          　　　服务端：没有信息，不作回应（时间一直的流逝。。。一直保持http连接， 当等到有消息的时候）
+          　       服务器端：给你xxxx（Response）–这时，第一次的http请求获得想要的结果，然后还要发起第二、三。。次http请求
+          　        客户端：有没有新消息（Request）–第二次http请求开始
+          　　     。。。。。
+          　　其缺点也是显而易见的，同ajax轮询一样，也是每次都要建立HTTP连接，也都是被动的。而且这种方法对服务器的并行要求比较大，因为在没有消息的时候，连接照样保持，而这时需要其它信息是又要建立新的连接（就连接保持中）
 </code></pre>
 <p>Websocket怎么工作的<br>　　客户端：我要建立websocket连接<br>　　服务器端：好的，已经切换到websocket协议，websocket连接已经建立<br>　　客户端：有什么消息要及时告诉（推送）我<br>　　服务器端：好的<br>　　服务器端：xxxxxx<br>　　服务器端：yyyyyyy<br>　　。。。。。<br>　　其优点就是，只要建立一次连接，就可以连续不断的得到服务器推送的消息，节省带宽和服务器端的压力。</p>
 </li>
@@ -292,38 +304,6 @@
 
     
 
-    
-    <div class="page-reward">
-      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
-        <div class="tooltip tooltip-east">
-          <span class="tooltip-item">
-            赏
-          </span>
-          <span class="tooltip-content">
-            <span class="tooltip-text">
-              <span class="tooltip-inner">
-                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
-                    class="icon icon-quo-right"></i></p>
-                <div class="reward-box">
-                  
-                  <div class="reward-box-item">
-                    <img class="reward-img" src="/img/alipay.jpg">
-                    <span class="reward-type">支付宝</span>
-                  </div>
-                  
-                  
-                  <div class="reward-box-item">
-                    <img class="reward-img" src="/img/weixin.png">
-                    <span class="reward-type">微信</span>
-                  </div>
-                  
-                </div>
-              </span>
-            </span>
-          </span>
-        </div>
-      </a>
-    </div>
     
 
     
@@ -438,6 +418,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#http%E5%92%8Chttps%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">http和https的理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-number">2.</span> <span class="toc-text">TCP三次握手</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP%E5%92%8CUDP%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">3.</span> <span class="toc-text">TCP和UDP的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebSocket%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%92%8C%E5%BA%94%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">WebSocket的实现和应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFWebSocket"><span class="toc-number">4.1.</span> <span class="toc-text">1.什么是WebSocket?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-WebSocket%E6%98%AF%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E5%8D%8F%E8%AE%AE%EF%BC%8C%E5%85%B7%E4%BD%93%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F"><span class="toc-number">4.2.</span> <span class="toc-text">2.WebSocket是什么样的协议，具体有什么优点？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Websocket%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">4.3.</span> <span class="toc-text">3. Websocket的作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-WebSocket%E4%B8%8ETCP%EF%BC%8CHTTP%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">4.4.</span> <span class="toc-text">4. WebSocket与TCP，HTTP的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Websocket%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">4.4.1.</span> <span class="toc-text">Websocket的作用</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Ajax%E8%BD%AE%E8%AF%A2%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%9F"><span class="toc-number">4.4.1.1.</span> <span class="toc-text">Ajax轮询怎么实现的？</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Websocket%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84"><span class="toc-number">4.4.1.2.</span> <span class="toc-text">Websocket怎么工作的</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-WebSocket%E4%B8%8ETCP%EF%BC%8CHTTP%E7%9A%84%E5%85%B3%E7%B3%BB-1"><span class="toc-number">4.5.</span> <span class="toc-text">4. WebSocket与TCP，HTTP的关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-websocket%E5%89%8D%E5%90%8E%E7%AB%AF%E9%80%9A%E4%BF%A1"><span class="toc-number">4.6.</span> <span class="toc-text">5. websocket前后端通信</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -621,7 +614,7 @@
     	<section class="tools-section tools-section-me" q-show="aboutme">
         
           
-  	  		<div class="aboutme-wrap" id="aboutme">主要涉及技术：<br>Java后端开发、聚合支付、<br>公众号开发、开源爱好者、Linux<br><br>联系QQ:2434387555<br><br>很惭愧<br><br>只做了一点微小的工作<br>谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="aboutme">主要涉及技术：<br>Javascript前端开发、Html、Css<br>React、React Native跨端开发<br><br>联系QQ:479525390<br><br>很惭愧<br><br>只做了一点微小的工作<br>谢谢大家</div>
   	  	
     	</section>
     
@@ -709,6 +702,66 @@
   <!-- <script async type="text/javascript" size="90" alpha="0.2" zIndex="0" src="/plugins/ribbon.js/ribbon.min.js"></script> -->
   
   
+    <script type="text/javascript" src="/plugins/live2d-widget.js/L2Dwidget.min.js"></script>
+<script type="text/javascript">
+  /**
+   * 完整配置请参考：https://l2dwidget.js.org/docs/class/src/index.js~L2Dwidget.html#instance-method-init
+   */
+  var pluginModelPath = "assets/", // 模型的文件路径，无需更改
+    pluginRootPath = "/live2d_models/"; // 插件的路径，无需更改
+  //特定的模型json文件名称
+  var modelPathJson = {
+    "epsilon2_1": "Epsilon2.1",
+    "gf": "Gantzert_Felixander",
+    "haru/01": "haru01",
+    "haru/02": "haru02",
+    "nietzsche": "nietzche"
+  }
+
+  
+    var modelName = "z16";
+  
+
+  var modelJsonPath = "";
+  if (modelPathJson[modelName]) {
+    modelJsonPath = pluginRootPath + modelName + "/" + pluginModelPath + modelPathJson[modelName] +
+      ".model.json";
+  } else {
+    modelJsonPath = pluginRootPath + modelName + "/" + pluginModelPath + modelName + ".model.json";
+  }
+  L2Dwidget.init({
+    model: {
+      jsonPath: modelJsonPath
+    },
+    display: {
+       position: "right", 
+       width: 145, 
+       height: 315, 
+       hOffset: 50, 
+      
+    },
+    mobile: {
+       show: false, 
+       scale: 0.6 
+    },
+    react: {
+       opacity: 0.8 
+    }
+  })
+
+</script>
+
+  
+  
+  <script type="text/javascript" src="/lib/snow.js"></script>
+  <script type="text/javascript" src="/lib/jquery-2.1.4.min.js"></script>
+  <script>
+    snow.down();
+    $(window).resize(function() {
+      $("canvas").css("z-index","500").remove();
+      snow.down();
+    });
+  </script>
   
 </body>
 
