@@ -75,7 +75,7 @@
       
 
 
-<div class="overlay" style="background: #4d4d4d;"></div>
+<div class="overlay" style="background: #4d4d4d;background: url('/img/biubiubiu.gif') no-repeat ;"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -100,8 +100,6 @@
 				
 			
 				
-					<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
-				
 			
 				
 					<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
@@ -112,23 +110,23 @@
 			<div class="social">
 				
 					
-						<a class="github" href="#" 
+						<a class="github" target="_blank" rel="noopener" href="https://github.com/helishou" 
 												title="GitHub" ><i class="icon-github"></i></a>
 					
 				
 					
-						<a class="github" href="#" 
-												title="GitHub" ><i class="icon-github"></i></a>
-					
-				
-					
-						<a class="gitee" href="#" 
+						<a class="gitee" target="_blank" rel="noopener" href="https://gitee.com/unclebaoi" 
 												title="码云" ><i class="icon-gitee"></i></a>
 					
 				
 					
-						<a class="jianshu" href="#" 
-												title="简书" ><i class="icon-jianshu"></i></a>
+						<a class="csdn" target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42595231?spm=1010.2135.3001.5421" 
+												title="CSDN" ><i class="icon-csdn"></i></a>
+					
+				
+					
+						<a class="bilibili" href="#" 
+												title="哔哩哔哩" ><i class="icon-bilibili"></i></a>
 					
 				
 			</div>
@@ -183,22 +181,22 @@
 					
 						
 						<a class="github" target="_blank" 
-							href="#" title="GitHub"><i class="icon-github"></i></a>
-						
-					
-						
-						<a class="github" target="_blank" 
-							href="#" title="GitHub"><i class="icon-github"></i></a>
+							href="https://github.com/helishou" title="GitHub"><i class="icon-github"></i></a>
 						
 					
 						
 						<a class="gitee" target="_blank" 
-							href="#" title="码云"><i class="icon-gitee"></i></a>
+							href="https://gitee.com/unclebaoi" title="码云"><i class="icon-gitee"></i></a>
 						
 					
 						
-						<a class="jianshu" target="_blank" 
-							href="#" title="简书"><i class="icon-jianshu"></i></a>
+						<a class="csdn" target="_blank" 
+							href="https://blog.csdn.net/weixin_42595231?spm=1010.2135.3001.5421" title="CSDN"><i class="icon-csdn"></i></a>
+						
+					
+						
+						<a class="bilibili" target="_blank" 
+							href="#" title="哔哩哔哩"><i class="icon-bilibili"></i></a>
 						
 					
 				</div>
@@ -230,9 +228,33 @@
     <article id="post-计算机网络基础复习（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/04/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/">计算机网络基础复习（一）</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/04/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/" class="archive-article-date">
+        <time datetime="2021-04-22T17:21:20.806Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-23</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
   <div class="article-entry" itemprop="articleBody">
     
-    <h2 id="计算机网络基础复习（一）"><a href="#计算机网络基础复习（一）" class="headerlink" title="计算机网络基础复习（一）"></a>计算机网络基础复习（一）</h2><ol>
+    <ol>
 <li>http和https的理解</li>
 <li>TCP三次握手</li>
 <li>TCP和UDP的区别</li>
@@ -453,8 +475,6 @@
       
     
       
-      
-      
     
       
       
@@ -466,15 +486,13 @@
     
     
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
-      
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -537,44 +555,6 @@
     	</section>
     
 
-    
-    	<section class="tools-section tools-section-friends" q-show="friends">
-  		
-        <ul class="search-ul">
-          
-            <li class="search-li">
-              <a href="https://github.com/helishou" target="_blank" 
-                class="search-title" >
-                
-                  <i class="icon-link icon"></i>
-                
-                GitHub
-              </a>
-            </li>
-          
-            <li class="search-li">
-              <a href="https://gitee.com/unclebaoi" target="_blank" 
-                class="search-title" >
-                
-                  <i class="icon-link icon"></i>
-                
-                码云
-              </a>
-            </li>
-          
-            <li class="search-li">
-              <a href="https://blog.csdn.net/weixin_42595231?spm=1010.2135.3001.5421" target="_blank" 
-                class="search-title" >
-                
-                  <i class="icon-link icon"></i>
-                
-                CSDN
-              </a>
-            </li>
-          
-        </ul>
-  		
-    	</section>
     
 
     
