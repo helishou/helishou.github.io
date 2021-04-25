@@ -17,21 +17,21 @@
 <meta property="og:site_name" content="河狸兽的博客">
 <meta property="og:description" content="什么是 HTTP 缓存">
 <meta property="og:locale">
-<meta property="og:image" content="https://helishou.github.io/.io//image-20210423164010233.png">
-<meta property="og:image" content="https://helishou.github.io/.io//image-20210423164029977.png">
-<meta property="og:image" content="https://helishou.github.io/.io//image-20210423164141104.png">
-<meta property="og:image" content="https://helishou.github.io/.io//image-20210423164340256.png">
-<meta property="og:image" content="https://helishou.github.io/.io//image-20210423164356297.png">
-<meta property="og:image" content="https://helishou.github.io/.io//image-20210423164409471.png">
-<meta property="og:image" content="https://helishou.github.io/.io//image-20210423164459784.png">
-<meta property="og:image" content="https://helishou.github.io/.io//image-20210423164511879.png">
-<meta property="og:image" content="https://helishou.github.io/.io//image-20210423165024209.png">
+<meta property="og:image" content="https://helishou.github.io/image-20210423164010233.png">
+<meta property="og:image" content="https://helishou.github.io/image-20210423164029977.png">
+<meta property="og:image" content="https://helishou.github.io/image-20210423164141104.png">
+<meta property="og:image" content="https://helishou.github.io/image-20210423164340256.png">
+<meta property="og:image" content="https://helishou.github.io/image-20210423164356297.png">
+<meta property="og:image" content="https://helishou.github.io/image-20210423164409471.png">
+<meta property="og:image" content="https://helishou.github.io/image-20210423164459784.png">
+<meta property="og:image" content="https://helishou.github.io/image-20210423164511879.png">
+<meta property="og:image" content="https://helishou.github.io/2021/04/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(%E4%BA%8C)/image-20210423165024209.png">
 <meta property="article:published_time" content="2021-04-23T07:46:00.724Z">
 <meta property="article:modified_time" content="2021-04-23T13:20:17.344Z">
 <meta property="article:author" content="helishou">
 <meta property="article:tag" content="javascript">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://helishou.github.io/.io//image-20210423164010233.png">
+<meta name="twitter:image" content="https://helishou.github.io/image-20210423164010233.png">
   
     <link rel="alternative" href="/atom.xml" title="河狸兽的博客" type="application/atom+xml">
   
@@ -303,9 +303,9 @@
 <p>响应头中相关字段为Expires、Cache-Control、Last-Modified、Etag。</p>
 <p>HTTP缓存的类型很多，根据是否需要重新向服务器发起请求来分类包括两种：强制缓存和对比缓存</p>
 <p>假设浏览器有一个缓存数据库用于本地缓存，先看看浏览器请求资源的情况：</p>
-<p><img src="/.io//image-20210423164010233.png" alt="image-20210423164010233"></p>
+<p><img src="/image-20210423164010233.png" alt="image-20210423164010233"></p>
 <h2 id="强制缓存"><a href="#强制缓存" class="headerlink" title="强制缓存"></a>强制缓存</h2><p>在浏览器已经缓存数据的情况下，使用强制缓存去请求数据的流程是这样的：</p>
-<p><img src="/.io//image-20210423164029977.png" alt="image-20210423164029977"></p>
+<p><img src="/image-20210423164029977.png" alt="image-20210423164029977"></p>
 <p>从流程图可以看到，强制缓存，在缓存数据未失效的情况下，可以直接使用缓存数据，不需要再请求服务器，那么浏览器是如何判断缓存数据是否失效呢？</p>
 <p>对于强制缓存来说，响应header中会有两个字段来标明失效规则（Expires/Cache-Control）</p>
 <h3 id="Expires："><a href="#Expires：" class="headerlink" title="Expires："></a><strong>Expires：</strong></h3><p>Expires 是 HTTP1.0 的产物了，现在默认浏览器均默认使用 HTTP 1.1，所以它的作用基本忽略。但是很多网站还是对它做了兼容。它的值为服务端返回的到期时间，即下一次请求时，请求时间小于服务端返回的到期时间，直接使用缓存数据。</p>
@@ -332,28 +332,28 @@
 </ol>
 <p>那么这个资源会被缓存31536000秒（365天），在365天内再次请求这条数据，都会直接获取缓存数据库中的数据，直接使用。</p>
 <p>那么我们试试再次访问资源，会有以下的响应：</p>
-<p><img src="/.io//image-20210423164141104.png" alt="image-20210423164141104"></p>
+<p><img src="/image-20210423164141104.png" alt="image-20210423164141104"></p>
 <p>可以看到HTTP状态码是200，Size这个字段显示：disk cache，说明浏览器确实走了强制缓存，没有再跟浏览器交互。</p>
 <p>我们上面说了，不同的访问/刷新手段，会使浏览器使用不同的缓存策略，要让浏览器走强制缓存对请求方式有一个要求: 在URI输入栏中输入然后回车/通过书签访问。</p>
 <h2 id="对比缓存"><a href="#对比缓存" class="headerlink" title="对比缓存"></a>对比缓存</h2><p>在浏览器已经缓存数据的情况下，使用对比缓存去请求数据的流程是这样的。</p>
-<p><img src="/.io//image-20210423164340256.png" alt="image-20210423164340256"></p>
+<p><img src="/image-20210423164340256.png" alt="image-20210423164340256"></p>
 <p>有同学可能会问，基于对比缓存的流程下，不管是否使用缓存，都需要向服务器发送请求，那么还用缓存干什么？</p>
 <p>这个问题，我们现在来探讨一下。</p>
 <p>对比缓存，顾名思义，需要进行比较判断是否可以使用缓存。</p>
 <p>浏览器<em>第一</em>次请求数据时，服务器会将缓存标识与数据一起返回给浏览器，浏览器将二者备份至缓存数据库中。</p>
 <p>当浏览器再次请求数据时，浏览器将备份的缓存标识发送给服务器，服务器根据缓存标识进行判断，判断成功后，返回304状态码，通知客户端比较成功，可以使用缓存数据。</p>
 <p>举个例子，<em>第一</em>次访问：</p>
-<p><img src="/.io//image-20210423164356297.png" alt="image-20210423164356297"></p>
+<p><img src="/image-20210423164356297.png" alt="image-20210423164356297"></p>
 <p>第二次访问：</p>
-<p><img src="/.io//image-20210423164409471.png" alt="image-20210423164409471"></p>
+<p><img src="/image-20210423164409471.png" alt="image-20210423164409471"></p>
 <h3 id="Last-Modified-If-Modified-Since"><a href="#Last-Modified-If-Modified-Since" class="headerlink" title="Last-Modified / If-Modified-Since"></a><strong>Last-Modified / If-Modified-Since</strong></h3><p>服务器响应请求时，会告诉浏览器一个告诉浏览器资源的<em>最后</em>修改时间：Last-Modified，浏览器之后再请求的时候，会带上一个头：If-Modified-Since，这个值就是服务器上一次给的 Last-Modified 的时间，服务器会比对资源当前<em>最后</em>的修改时间，如果大于If-Modified-Since，则说明资源修改过了，浏览器不能再使用缓存，否则浏览器可以继续使用缓存，并返回304状态码</p>
 <h3 id="Etag-If-None-Match（优先级高于Last-Modified-If-Modified-Since）"><a href="#Etag-If-None-Match（优先级高于Last-Modified-If-Modified-Since）" class="headerlink" title="Etag  /  If-None-Match（优先级高于Last-Modified  /  If-Modified-Since）"></a><strong>Etag  /  If-None-Match（优先级高于Last-Modified  /  If-Modified-Since）</strong></h3><p>服务器响应请求时，通过Etag头部告诉浏览器当前资源在服务器的<em>唯一</em>标识（生成规则由服务器决定），浏览器再次请求时，就会带上一个头If-None-Match，这个值就是服务器上一次给的Etag的值，服务器比对一下资源当前的Etag是否跟If-None-Match一致，不一致则说明资源修改过了，浏览器不能再使用缓存，否则浏览器可以继续使用缓存，并返回304状态码。</p>
 <p>看个例子：<em>第一</em>次请求，服务器的响应头包含了：</p>
-<p><img src="/.io//image-20210423164459784.png" alt="image-20210423164459784"></p>
+<p><img src="/image-20210423164459784.png" alt="image-20210423164459784"></p>
 <p>第二次请求，浏览器的请求头</p>
-<p><img src="/.io//image-20210423164511879.png" alt="image-20210423164511879"></p>
+<p><img src="/image-20210423164511879.png" alt="image-20210423164511879"></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我们再看一下HTTP缓存的一个总概流程图：</p>
-<p><img src="/.io//image-20210423165024209.png" alt="image-20210423165024209"></p>
+<p><img src="/2021/04/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0(%E4%BA%8C)/image-20210423165024209.png" alt="image-20210423165024209"></p>
 <ul>
 <li>HTTP缓存主要分强制缓存和对比缓存</li>
 <li>强制缓存的 HTTP 相关头部 Cache-Control，Exipres（HTTP1.0），浏览器直接读本地缓存，不会再跟服务器端交互，状态码 200。</li>

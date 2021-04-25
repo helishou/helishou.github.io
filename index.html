@@ -228,6 +228,447 @@
             
 
   
+    <article id="post-JavaScript事件处理模型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>約耳趣談軟體Ch26中的「抽象滲漏法則」，更是心有戚戚焉。</p>
+<p>理論上，工具把他背後做的事情「抽象化」了，<br>但是，抽象總會有滲漏。<br>不知道抽象了甚麼，就不會知道問題出在哪裡。</p>
+<p><em>所以適當處理漏洞的方法，就是弄懂該抽象原理以及所隱藏的東西。<br>抽象機制幫助我們節省工作的時間，不過，學習的時間是無法省的。</em></p>
+<p>就像從ASP.NET一開始推出時的控制項概念，一路到後來的Entity framework架構，都是某種廣義的抽象，也都適用「抽象滲漏法則」。</p>
+<h1 id="冒泡-amp-捕获"><a href="#冒泡-amp-捕获" class="headerlink" title="冒泡&amp;捕获"></a>冒泡&amp;捕获</h1><h3 id="01-前言"><a href="#01-前言" class="headerlink" title="01 前言"></a>01 前言</h3><ol>
+<li><p>事件冒泡：结构上（非视觉上）嵌套关系的元素，会存在事件冒泡的功能，即同一事件，自子元素冒泡向父元素（自底向上）</p>
+</li>
+<li><p>事件捕获：结构上（非视觉上）嵌套关系的元素，会存在事件捕获的功能，即同一事件，自父元素捕获至子元素（事件源元素）（自顶向下）</p>
+</li>
+<li><p>一个对象的一个事件类型绑定一个处理函数只能遵循一个事件模型，但是若一个对象的一个事件类型绑定两个处理函数，那么触发顺序：先捕获，后冒泡。</p>
+</li>
+<li><p>element.addEventListener(event-type, function, false/true)方法用于向指定元素添加事件句柄，IE8 及更早IE版本不支持该方法。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th></th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>event-type</td>
+<td>必须</td>
+<td>字符串，指定事件名。注意: 不要使用 “on” 前缀。</td>
+</tr>
+<tr>
+<td>function</td>
+<td>必须</td>
+<td>定要事件触发时执行的函数。当事件对象会作为第一个参数传入函数。</td>
+</tr>
+<tr>
+<td>false/true</td>
+<td>可选</td>
+<td>布尔值，指定事件是否在捕获或冒泡阶段执行。（false-默认：事件句柄在冒泡阶段执行；true ：事件句柄在捕获阶段执行）</td>
+</tr>
+</tbody></table>
+<h3 id="02-事件冒泡"><a href="#02-事件冒泡" class="headerlink" title="02 事件冒泡"></a>02 事件冒泡</h3><ul>
+<li>同一事件，自子元素冒泡向父元素，即 自底向上 。</li>
+<li>标准的方法：元素.addEventListener(event-type,function,false)</li>
+<li>注：focus, blur, change, submit, reset,select 等事件不冒泡。</li>
+</ul>
+<h4 id="2-1-实例"><a href="#2-1-实例" class="headerlink" title="2.1 实例"></a>2.1 实例</h4><p>   冒泡（结构自底向上）</p>
+</li>
+</ol>
+<p>html代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;wrapper&quot;&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;content&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;box&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<p>css代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">.wrapper &#123;</span><br><span class="line">    width: 300px;</span><br><span class="line">    height: 300px;</span><br><span class="line">    background-color: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.content &#123;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 200px;</span><br><span class="line">    background-color: green;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.box &#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 100px;</span><br><span class="line">    background-color: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>JavaScript代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">wrapper.addEventListener(&#39;click&#39;, function () &#123;</span><br><span class="line">    console.log(&#39;wrapper&#39;);</span><br><span class="line">&#125;, false); &#x2F;&#x2F; wrapper</span><br><span class="line">content.addEventListener(&#39;click&#39;, function () &#123;</span><br><span class="line">    console.log(&#39;content&#39;);</span><br><span class="line">&#125;, false); &#x2F;&#x2F; content  wrapper</span><br><span class="line">box.addEventListener(&#39;click&#39;, function () &#123;</span><br><span class="line">    console.log(&#39;box&#39;);</span><br><span class="line">&#125;, false); &#x2F;&#x2F; box  content  wrapper</span><br></pre></td></tr></table></figure>
+<p>代码运行效果如下：</p>
+<p><img src="https://img-blog.csdnimg.cn/2020091610053811.gif#pic_center" alt="maopao.gif"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200916100537987.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1l1a2lfeXVoYW4=,size_16,color_FFFFFF,t_70#pic_center" alt="maopao"></p>
+<h4 id="2-2-取消冒泡"><a href="#2-2-取消冒泡" class="headerlink" title="2.2 取消冒泡"></a>2.2 取消冒泡</h4><ul>
+<li><p>W3C标准 event.stopPropagation();（不支持IE9以下版本）</p>
+</li>
+<li><p>IE独有 event.cancelBubble = true;（谷歌其实也实现了）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">div.onclick &#x3D; function (e) &#123;</span><br><span class="line">    &#x2F;&#x2F; e 事件对象</span><br><span class="line">    e.stopPropagation(); &#x2F;&#x2F;事件对象提供了一个可以取消冒泡的方法</span><br><span class="line">    &#x2F;&#x2F; e.cancelBubble &#x3D; true; 这个也可</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>  注：在每一个事件处理函数里面可以写一个形参，如上面代码中的形参e（一个就可以了，多了没用）。虽然我们不能传递数据，但是系统会自动帮我们传一个事件对象，这个事件对象有很多属性，每一个属性记载了这个事件发生时的一些关键性数据和信息，如事件类型，事件时刻，鼠标的一些坐标点等等。系统会将其打包来供我们使用（注：IE里面会失效，但是IE里面有window.event来记录）</p>
+<ul>
+<li>封装取消冒泡的函数stopBubble(event) <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function stopBubble(event) &#123;</span><br><span class="line">    if (event.stopPropagation) &#123;</span><br><span class="line">        event.stopPropagation();</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        e.cancelBubble &#x3D; true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="03-事件捕获"><a href="#03-事件捕获" class="headerlink" title="03 事件捕获"></a>03 事件捕获</h3><ul>
+<li>同一事件，自父元素捕获至子元素，即 自顶向下 。</li>
+<li>标准的方法：元素.addEventListener(event-type,function,true)<h4 id="3-1-实例"><a href="#3-1-实例" class="headerlink" title="3.1 实例"></a>3.1 实例</h4>  捕获 （结构自顶向下）<br>html代码如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;wrapper&quot;&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;content&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;box&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>css代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">.wrapper &#123;</span><br><span class="line">    width: 300px;</span><br><span class="line">    height: 300px;</span><br><span class="line">    background-color: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.content &#123;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 200px;</span><br><span class="line">    background-color: green;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.box &#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 100px;</span><br><span class="line">    background-color: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>JavaScript代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">wrapper.addEventListener(&#39;click&#39;, function () &#123;</span><br><span class="line">    console.log(&#39;wrapper&#39;);</span><br><span class="line">&#125;, true); &#x2F;&#x2F; wrapper</span><br><span class="line">content.addEventListener(&#39;click&#39;, function () &#123;</span><br><span class="line">    console.log(&#39;content&#39;);</span><br><span class="line">&#125;, true); &#x2F;&#x2F; wrapper  content </span><br><span class="line">box.addEventListener(&#39;click&#39;, function () &#123;</span><br><span class="line">    console.log(&#39;box&#39;);</span><br><span class="line">&#125;, true); &#x2F;&#x2F; wrapper  content  box</span><br></pre></td></tr></table></figure>
+<p>代码运行效果如下：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200916100641316.gif#pic_center" alt="buhuo.gif"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200916100641311.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1l1a2lfeXVoYW4=,size_16,color_FFFFFF,t_70#pic_center" alt="buhuo"></p>
+<h3 id="04-阻止默认事件"><a href="#04-阻止默认事件" class="headerlink" title="04 阻止默认事件"></a>04 阻止默认事件</h3><ul>
+<li><p>默认事件：浏览器通过HTML标签或DOM元素提供的一些功能性的默认行为，包括表单提交，a标签跳转，右键呼出菜单(contextmenu是右键出菜单事件)等。</p>
+</li>
+<li><p>所以我们可以通过js取消或更改这些默认事件：<br>（1） return false; （以对象属性的方式注册的事件才生效，虽然兼容性非常好，但只有句柄方式(‘on’)绑定的事件才能好用 。）<br>（2） event.preventDefault(); （W3C标准，IE9以下不兼容）<br>（3） event.returnValue = false; （兼容IE）</p>
+</li>
+<li><p>封装阻止默认事件的函数cancelHandler(event);</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 封装函数cancelHandler</span><br><span class="line">function cancelHandler(event) &#123;</span><br><span class="line">    if (event.preventDefault) &#123;</span><br><span class="line">        event.preventDefault();</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        event.returnValue &#x3D; false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 测试实例如下：</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 方式一：调用函数---阻止右键呼出菜单事件</span><br><span class="line">document.oncontextmenu &#x3D; function (e) &#123;</span><br><span class="line">    console.log(&#39;a&#39;);</span><br><span class="line">    cancelHandler(e);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 方式二：对句柄方式绑定的事件采用return false;</span><br><span class="line">var a &#x3D; document.createElement(&#39;a&#39;);</span><br><span class="line">a.innerHTML &#x3D; &#39;www.baidu.com&#39;;</span><br><span class="line">a.href &#x3D; &#39;#&#39;;</span><br><span class="line">document.body.appendChild(a);</span><br><span class="line">&#x2F;&#x2F;阻止a标签跳转事件</span><br><span class="line">a.onclick &#x3D; function () &#123; </span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>————————————————<br>版权声明：本文为CSDN博主「小晗同学」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Yuki_yuhan/article/details/108558215">https://blog.csdn.net/Yuki_yuhan/article/details/108558215</a></p>
+<h1 id="事件委托详解"><a href="#事件委托详解" class="headerlink" title="事件委托详解"></a>事件委托详解</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a><strong>基本概念</strong></h2><p>事件委托，通俗地来讲，就是把一个元素响应事件（click、keydown……）的函数委托到另一个元素；</p>
+<p>一般来讲，会把一个或者一组元素的事件委托到它的父层或者更外层元素上，真正绑定事件的是外层元素，当事件响应到需要绑定的元素上时，会通过事件冒泡机制从而触发它的外层元素的绑定事件上，然后在外层元素上去执行函数。</p>
+<p>举个例子，比如一个宿舍的同学同时快递到了，一种方法就是他们都傻傻地一个个去领取，还有一种方法就是把这件事情委托给宿舍长，让一个人出去拿好所有快递，然后再根据收件人一一分发给每个宿舍同学；</p>
+<p>在这里，取快递就是一个事件，每个同学指的是需要响应事件的 DOM 元素，而出去统一领取快递的宿舍长就是代理的元素，所以真正绑定事件的是这个元素，按照收件人分发快递的过程就是在事件执行中，需要判断当前响应的事件应该匹配到被代理元素中的哪一个或者哪几个。</p>
+<h2 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a><strong>事件冒泡</strong></h2><p>前面提到 DOM 中事件委托的实现是利用事件冒泡的机制，那么事件冒泡是什么呢？</p>
+<p>在 document.addEventListener 的时候我们可以设置事件模型：事件冒泡、事件捕获，一般来说都是用事件冒泡的模型；</p>
+<p><img src="https://pic1.zhimg.com/80/v2-bf3b8dbab027713a2b21b9e8a5b7a6c4_720w.jpg" alt="img"></p>
+<p>如上图所示，事件模型是指分为三个阶段：</p>
+<ul>
+<li>捕获阶段：在事件冒泡的模型中，捕获阶段不会响应任何事件；</li>
+<li>目标阶段：目标阶段就是指事件响应到触发事件的最底层元素上；</li>
+<li>冒泡阶段：冒泡阶段就是事件的触发响应会从最底层目标一层层地向外到最外层（根节点），事件代理即是利用事件冒泡的机制把里层所需要响应的事件绑定到外层；### 事件</li>
+</ul>
+<h2 id="委托的优点"><a href="#委托的优点" class="headerlink" title="委托的优点"></a><strong>委托的优点</strong></h2><h3 id="1-减少内存消耗"><a href="#1-减少内存消耗" class="headerlink" title="1. 减少内存消耗"></a>1. 减少内存消耗</h3><p>试想一下，若果我们有一个列表，列表之中有大量的列表项，我们需要在点击列表项的时候响应一个事件；</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=&quot;list&quot;&gt;</span><br><span class="line">  &lt;li&gt;item 1&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;item 2&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;item 3&lt;/li&gt;</span><br><span class="line">  ......</span><br><span class="line">  &lt;li&gt;item n&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line">// ...... 代表中间还有未知数个 li</span><br></pre></td></tr></table></figure>
+
+
+<p>如果给每个列表项一一都绑定一个函数，那对于内存消耗是非常大的，效率上需要消耗很多性能；</p>
+<p>因此，比较好的方法就是把这个点击事件绑定到他的父层，也就是 <code>ul</code> 上，然后在执行事件的时候再去匹配判断目标元素；</p>
+<p>所以事件委托可以减少大量的内存消耗，节约效率。</p>
+<h3 id="2-动态绑定事件"><a href="#2-动态绑定事件" class="headerlink" title="2. 动态绑定事件"></a>2. 动态绑定事件</h3><p>比如上述的例子中列表项就几个，我们给每个列表项都绑定了事件；</p>
+<p>在很多时候，我们需要通过 AJAX 或者用户操作动态的增加或者去除列表项元素，那么在每一次改变的时候都需要重新给新增的元素绑定事件，给即将删去的元素解绑事件；</p>
+<p>如果用了事件委托就没有这种麻烦了，因为事件是绑定在父层的，和目标元素的增减是没有关系的，执行到目标元素是在真正响应执行事件函数的过程中去匹配的；</p>
+<p>所以使用事件在动态绑定事件的情况下是可以减少很多重复工作的。</p>
+<h3 id="3-让我们看一个示例"><a href="#3-让我们看一个示例" class="headerlink" title="3.让我们看一个示例"></a>3.让我们看一个示例</h3><p>—— 反映中国古代哲学的 <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Ba_gua">八卦图</a>。</p>
+<table>   
+    <tr>     
+        <th colspan="3"><em>Bagua</em> Chart: Direction, Element, Color, Meaning</th>  
+    </tr>  
+    <tr>     
+        <td class="nw"><strong>Northwest</strong><br>Metal<br>Silver<br>Elders</td>  
+        <td class="n">...</td>     
+        <td class="ne">...</td> 
+    </tr>   
+    <tr>...2 more lines of this kind...</tr>
+    <tr>...2 more lines of this kind...</tr> 
+</table>
+
+<p>该表格有 9 个单元格（cell），但可以有 99 个或 9999 个单元格，这都不重要。</p>
+<p><strong>我们的任务是在点击时高亮显示被点击的单元格 <code>&lt;td&gt;</code>。</strong></p>
+<p>与其为每个 <code>&lt;td&gt;</code>（可能有很多）分配一个 <code>onclick</code> 处理程序 —— 我们可以在 <code>&lt;table&gt;</code> 元素上设置一个“捕获所有”的处理程序。</p>
+<p>它将使用 <code>event.target</code> 来获取点击的元素并高亮显示它。</p>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">let selectedTd;</span><br><span class="line"></span><br><span class="line">table.onclick &#x3D; function(event) &#123;</span><br><span class="line">  let target &#x3D; event.target; &#x2F;&#x2F; 在哪里点击的？</span><br><span class="line"></span><br><span class="line">  if (target.tagName !&#x3D; &#39;TD&#39;) return; &#x2F;&#x2F; 不在 TD 上？那么我们就不会在意</span><br><span class="line"></span><br><span class="line">  highlight(target); &#x2F;&#x2F; 高亮显示它</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">function highlight(td) &#123;</span><br><span class="line">  if (selectedTd) &#123; &#x2F;&#x2F; 移除现有的高亮显示，如果有的话</span><br><span class="line">    selectedTd.classList.remove(&#39;highlight&#39;);</span><br><span class="line">  &#125;</span><br><span class="line">  selectedTd &#x3D; td;</span><br><span class="line">  selectedTd.classList.add(&#39;highlight&#39;); &#x2F;&#x2F; 高亮显示新的 td</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在我们的例子中，如果我们看一下 HTML 内部，我们可以看到 <code>&lt;td&gt;</code> 内还有嵌套的标签，例如 <code>&lt;strong&gt;</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;td&gt;  *&lt;strong&gt;Northwest&lt;&#x2F;strong&gt;*  ... &lt;&#x2F;td&gt;</span><br></pre></td></tr></table></figure>
+
+<p>自然地，如果在该 <code>&lt;strong&gt;</code> 上点击，那么它将成为 <code>event.target</code> 的值。</p>
+<p>在处理程序 <code>table.onclick</code> 中，我们应该接受这样的 <code>event.target</code>，并确定该点击是否在 <code>&lt;td&gt;</code> 内。</p>
+<p>下面是改进后的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">table.onclick &#x3D; function(event) &#123;</span><br><span class="line"></span><br><span class="line">  let td &#x3D; event.target.closest(&#39;td&#39;); &#x2F;&#x2F; (1)  </span><br><span class="line"></span><br><span class="line"> if (!td) return; &#x2F;&#x2F; (2)  </span><br><span class="line"></span><br><span class="line"> if (!table.contains(td)) return; &#x2F;&#x2F; (3)</span><br><span class="line"></span><br><span class="line">   highlight(td); &#x2F;&#x2F; (4)</span><br><span class="line"></span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>解释：</p>
+<ol>
+<li><code>elem.closest(selector)</code> 方法返回与 <code>selector</code> 匹配的最近的祖先。在我们的例子中，我们从源元素开始向上寻找 <code>&lt;td&gt;</code>。</li>
+<li>如果 <code>event.target</code> 不在任何 <code>&lt;td&gt;</code> 中，那么调用将立即返回，因为这里没有什么事儿可做。</li>
+<li>对于嵌套的表格，<code>event.target</code> 可能是一个 <code>&lt;td&gt;</code>，但位于当前表格之外。因此我们需要检查它是否是 <strong>我们的表格中的</strong> <code>&lt;td&gt;</code>。</li>
+<li>如果是的话，就高亮显示它。</li>
+</ol>
+<p>最终，我们得到了一个快速、高效的用于高亮显示的代码，该代码与表格中的 <code>&lt;td&gt;</code> 的数量无关。</p>
+<h3 id="4-委托示例：标记中的行为"><a href="#4-委托示例：标记中的行为" class="headerlink" title="4.委托示例：标记中的行为"></a>4.委托示例：标记中的行为</h3><p>事件委托还有其他用途。（译注：本节标题中的“标记中的行为”即 action in markup）</p>
+<p>例如，我们想要编写一个有“保存”、“加载”和“搜索”等按钮的菜单。并且，这里有一个具有 <code>save</code>、<code>load</code> 和 <code>search</code> 等方法的对象。如何匹配它们？</p>
+<p>第一个想法可能是为每个按钮分配一个单独的处理程序。但是有一个更优雅的解决方案。我们可以为整个菜单添加一个处理程序，并为具有方法调用的按钮添加 <code>data-action</code> 特性（attribute）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button *data-action**&#x3D;&quot;save&quot;*&gt;Click to Save&lt;&#x2F;button&gt;</span><br></pre></td></tr></table></figure>
+
+<p>更多<a target="_blank" rel="noopener" href="https://zh.javascript.info/event-delegation">https://zh.javascript.info/event-delegation</a></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/04/25/JavaScript%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E6%A8%A1%E5%9E%8B/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-javascript的类及原型链" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h3 id="类的创建和继承"><a href="#类的创建和继承" class="headerlink" title="类的创建和继承"></a>类的创建和继承</h3><p>小达：嗯恩，好的。</p>
+<p>类的创建（es5）：<code>new 一个 function</code>，在这个 <code>function 的 prototype</code> 里面增加属性和 方法。</p>
+<p>下面来创建一个 <code>Animal</code> 类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 定义一个动物类 </span><br><span class="line">function Animal (name) &#123; </span><br><span class="line">&#x2F;&#x2F; 属性 </span><br><span class="line">this.name &#x3D; name || &#39;Animal&#39;; </span><br><span class="line">&#x2F;&#x2F; 实例方法 </span><br><span class="line">this.sleep &#x3D; function()&#123; </span><br><span class="line">console.log(this.name + &#39;正在睡觉！&#39;); </span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 原型方法 </span><br><span class="line">Animal.prototype.eat &#x3D; function(food) &#123; </span><br><span class="line">console.log(this.name + &#39;正在吃：&#39; + food); </span><br><span class="line">&#125;;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>这样就生成了一个 <code>Animal</code> 类, 实例化生成对象后，有方法和属性。</p>
+<p>类的继承——原型链继承 –原型链继承</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function Cat()&#123; &#125; </span><br><span class="line">Cat.prototype &#x3D; new Animal(); </span><br><span class="line">Cat.prototype.name &#x3D; &#39;cat&#39;; </span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Test Code </span><br><span class="line">var cat &#x3D; new Cat(); </span><br><span class="line">console.log(cat.name); </span><br><span class="line">console.log(cat.eat(&#39;fish&#39;)); </span><br><span class="line">console.log(cat.sleep()); </span><br><span class="line"></span><br><span class="line">console.log(cat instanceof Animal); &#x2F;&#x2F;true </span><br><span class="line">console.log(cat instanceof Cat); &#x2F;&#x2F;true</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>特点：基于原型链，既是父类的实例，也是子类的实例</li>
+<li>缺点：无法实现多继承</li>
+</ul>
+<p>构造继承：使用父类的构造函数来增强子类实例，等于是复制父类的实例属性给 子类（没用到原型）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function Cat(name)&#123; </span><br><span class="line">Animal.call(this); </span><br><span class="line">this.name &#x3D; name || &#39;Jeskson&#39;; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Test Code </span><br><span class="line">var cat &#x3D; new Cat(); </span><br><span class="line">console.log(cat.name); </span><br><span class="line">console.log(cat.sleep()); </span><br><span class="line"></span><br><span class="line">console.log(cat instanceof Animal); &#x2F;&#x2F; false </span><br><span class="line">console.log(cat instanceof Cat); &#x2F;&#x2F; true </span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>特点：可以实现多继承</li>
+<li>缺点：只能继承父类实例的属性和方法，不能继承原型上的属性和方法</li>
+</ul>
+<p>组合继承：相当于构造继承和原型链继承的组合体。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function Cat(name)&#123; </span><br><span class="line">Animal.call(this); </span><br><span class="line">this.name &#x3D; name || &#39;Tom&#39;; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Cat.prototype &#x3D; new Animal(); </span><br><span class="line">Cat.prototype.constructor &#x3D; Cat; </span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Test Code </span><br><span class="line">var cat &#x3D; new Cat(); </span><br><span class="line">console.log(cat.name); </span><br><span class="line">console.log(cat.sleep()); </span><br><span class="line">console.log(cat instanceof Animal); &#x2F;&#x2F; true </span><br><span class="line">console.log(cat instanceof Cat); &#x2F;&#x2F; true</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>特点：可以继承实例属性/方法，也可以继承原型属性/方法</li>
+<li>缺点：调用了两次父类构造函数，生成了两份实例</li>
+</ul>
+<h4 id="寄生组合继承："><a href="#寄生组合继承：" class="headerlink" title="寄生组合继承："></a><strong>寄生组合继承：</strong></h4><p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function Cat(name)&#123; </span><br><span class="line">Animal.call(this); </span><br><span class="line">this.name &#x3D; name || &#39;Jeskson&#39;; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(function()&#123; </span><br><span class="line">&#x2F;&#x2F; 创建一个没有实例方法的类 </span><br><span class="line">var Super &#x3D; function()&#123;&#125;; </span><br><span class="line">Super.prototype &#x3D; Animal.prototype; </span><br><span class="line">&#x2F;&#x2F;将实例作为子类的原型 </span><br><span class="line">Cat.prototype &#x3D; new Super(); </span><br><span class="line">&#125;)(); </span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Test Code </span><br><span class="line">var cat &#x3D; new Cat(); </span><br><span class="line">console.log(cat.name); </span><br><span class="line">console.log(cat.sleep()); </span><br><span class="line">console.log(cat instanceof Animal); &#x2F;&#x2F; true </span><br><span class="line">console.log(cat instanceof Cat); &#x2F;&#x2F;true</span><br></pre></td></tr></table></figure>
+
+
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/04/25/javascript%E7%9A%84%E7%B1%BB%E5%8F%8A%E5%8E%9F%E5%9E%8B%E9%93%BE/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-FC格式上下文" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+  <div class="article-entry" itemprop="articleBody">
+    
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/04/24/FC%E6%A0%BC%E5%BC%8F%E4%B8%8A%E4%B8%8B%E6%96%87/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-一个url请求" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+  <div class="article-entry" itemprop="articleBody">
+    
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/04/24/%E4%B8%80%E4%B8%AAurl%E8%AF%B7%E6%B1%82/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-flex布局" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+  <div class="article-entry" itemprop="articleBody">
+    
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/04/24/flex%E5%B8%83%E5%B1%80/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-前端优化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -494,7 +935,7 @@
     <p>装机装了一天，看了很多教程，踩了无数坑，终于成功了，写一篇教程防止后人踩坑吧.</p>
 <h2 id="关于黑苹果"><a href="#关于黑苹果" class="headerlink" title="关于黑苹果"></a>关于黑苹果</h2><p>折腾过的人应该不陌生，自从苹果采用 Intel 的处理器，被解锁后可以安装在 Intel CPU 与部分 AMD CPU 的机器上。从而出现了一大批非苹果设备而使用苹果操作系统的机器，被称为黑苹果(Hackintosh)。</p>
 <p>在 Mac 苹果机上面安装原版 Mac 系统的被称为白苹果（ Macintosh ）与黑苹果相对。(摘抄自百度)，很多人就是因为没有正确的安装黑苹果，导致安装失败，最终放弃。</p>
-<p>我给大家分享一下我安装黑苹果的经历，我的方法也许不是最简单的，但是希望你能喜欢。(本文部分经验来源于百度)
+<p>我给大家分享一下我安装黑苹果的经历，我的方法也许不是最简单的，但是希望你能喜欢。(本文部分经验来源于百度)</p>
     
     <a class="article-more-a" href="/2021/04/19/%E7%82%AB%E9%BE%99KP2%E8%A3%85%E9%BB%91%E8%8B%B9%E6%9E%9C%E6%95%99%E7%A8%8B/#more">more >></a>
     
