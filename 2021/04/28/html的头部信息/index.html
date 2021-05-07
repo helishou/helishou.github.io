@@ -10,21 +10,18 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="一、DNS域名解析根据输入的 URL 域名找到真实 IP 地址，在查找的过程中，浏览器首先会寻找缓存，查看缓存中是否有记录，缓存的查找记录为：  浏览器缓存-》操作系统缓存-》路由器缓存； 缓存中没有则查找系统的hosts文件中是否有记录； 如果没有则查询DNS服务器，首先从顶级域名，再到二级域名，以此类推。  输入 url 后，首先需要找到这个 url 域名的服务器 ip,为了寻找这个 ip，浏">
+  <meta name="description" content="title: html中head里的meta标签的用法date: 2021-04-23 20:42:20tags: meta标签分两大部分：HTTP-EQUIV和NAME变量。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="河狸兽的博客">
-<meta property="og:url" content="https://helishou.github.io/2021/04/24/%E4%B8%80%E4%B8%AAurl%E8%AF%B7%E6%B1%82/index.html">
+<meta property="og:url" content="https://helishou.github.io/2021/04/28/html%E7%9A%84%E5%A4%B4%E9%83%A8%E4%BF%A1%E6%81%AF/index.html">
 <meta property="og:site_name" content="河狸兽的博客">
-<meta property="og:description" content="一、DNS域名解析根据输入的 URL 域名找到真实 IP 地址，在查找的过程中，浏览器首先会寻找缓存，查看缓存中是否有记录，缓存的查找记录为：  浏览器缓存-》操作系统缓存-》路由器缓存； 缓存中没有则查找系统的hosts文件中是否有记录； 如果没有则查询DNS服务器，首先从顶级域名，再到二级域名，以此类推。  输入 url 后，首先需要找到这个 url 域名的服务器 ip,为了寻找这个 ip，浏">
+<meta property="og:description" content="title: html中head里的meta标签的用法date: 2021-04-23 20:42:20tags: meta标签分两大部分：HTTP-EQUIV和NAME变量。">
 <meta property="og:locale">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/aVp1YC8UV0elY5J3ByiaACdNibia22r5uZ291pgkbO5sR1KClapaJhKNTqy6IdiagRial4RwyIzpPUy1iaYiabqHS9Z7w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://pic2.zhimg.com/v2-9b4d80c0a3226a17a360178a3527d9b9_r.jpg">
-<meta property="article:published_time" content="2021-04-23T16:46:54.117Z">
-<meta property="article:modified_time" content="2021-04-27T07:53:48.414Z">
+<meta property="article:published_time" content="2021-04-28T07:08:52.646Z">
+<meta property="article:modified_time" content="2021-04-28T07:23:40.778Z">
 <meta property="article:author" content="helishou">
 <meta property="article:tag" content="javascript">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_png/aVp1YC8UV0elY5J3ByiaACdNibia22r5uZ291pgkbO5sR1KClapaJhKNTqy6IdiagRial4RwyIzpPUy1iaYiabqHS9Z7w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
   
     <link rel="alternative" href="/atom.xml" title="河狸兽的博客" type="application/atom+xml">
   
@@ -226,131 +223,36 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-一个url请求" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-html的头部信息" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
   <div class="article-entry" itemprop="articleBody">
     
-    <h3 id="一、DNS域名解析"><a href="#一、DNS域名解析" class="headerlink" title="一、DNS域名解析"></a>一、DNS域名解析</h3><p>根据输入的 URL 域名找到真实 IP 地址，在查找的过程中，浏览器首先会寻找缓存，查看缓存中是否有记录，缓存的查找记录为：</p>
-<ul>
-<li>浏览器缓存-》操作系统缓存-》路由器缓存；</li>
-<li>缓存中没有则查找系统的hosts文件中是否有记录；</li>
-<li>如果没有则查询DNS服务器，首先从顶级域名，再到二级域名，以此类推。</li>
-</ul>
-<p><strong>输入 url 后，首先需要找到这个 url 域名的服务器 ip,为了寻找这个 ip，浏览器首先会寻 找缓存，查看缓存中是否有记录，缓存的查找记录为：浏览器缓存-》系统缓存-》路由 器缓存，缓存中没有则查找系统的 hosts 文件中是否有记录，如果没有则查询 DNS 服务器</strong></p>
-<h3 id="二、建立TCP连接"><a href="#二、建立TCP连接" class="headerlink" title="二、建立TCP连接"></a>二、建立TCP连接</h3><p>根据 IP 地址，客户端与服务端进行三次握手，建立连接。</p>
-<p>为了准确无误地把数据送达目标处，TCP采用了三次握手策略：用TCP把数据包发送出去后，TCP不会对传送后的数据置之不理，它一定会向对方确认是否成功送达</p>
-<ul>
-<li>发送端首先给接收端发送一个带SYN标志的数据包。</li>
-<li>接收端收到后，回传一个带有SYN/ACK标志的数据包以表示正确传达，并确认信息。</li>
-<li>最后，发送端再回传一个带ACK标志的数据包，代表“握手”结束。</li>
-</ul>
-<p><strong>得到服务器的 ip 地址后，浏览器根据这个 ip 以及相应的端口号，构造一个 http 请 求，这个请求报文会包括这次请求的信息，主要是请求方法，请求说明和请求附带的数 据，并将这个 http 请求封装在一个 tcp 包中，这个 tcp 包会依次经过传输层，网络层， 数据链路层，物理层到达服务器，服务器解析这个请求来作出响应，返回相应的 html 给浏览器</strong></p>
-<h3 id="三、传输数据"><a href="#三、传输数据" class="headerlink" title="三、传输数据"></a>三、传输数据</h3><p>连接后，客户端向服务端发起 HTTP 请求，服务器接收到请求后，返回请求静态资源，并同时调用 apache 服务器请求接口数据。</p>
-<h3 id="四、关闭TCP连接"><a href="#四、关闭TCP连接" class="headerlink" title="四、关闭TCP连接"></a>四、关闭TCP连接</h3><p>数据传输完成，客户端与服务端进行四次挥手，关闭连接。</p>
-<p>断开一个TCP连接则需要“四次挥手”：</p>
-<ul>
-<li><strong>第一次挥手</strong>：主动关闭方发送一个FIN，用来关闭主动关闭方到被动关闭方的数据传送，也就是主动关闭方告诉被动关闭方，主动关闭方已经不会再给被动关闭方发送数据了（当然，在FIN包之前发送出去的数据，如果没有收到对应的ACK确认报文，主动关闭方依然会重发这些数据），但是，此时主动关闭方还可以接收数据。</li>
-<li><strong>第二次挥手</strong>：被动关闭方收到FIN包后，给对方发送一个ACK，确认序号为收到序号+1（与SYN相同，一个FIN占用一个序号）。</li>
-<li><strong>第三次挥手</strong>：被动关闭方发送一个FIN，用来关闭被动关闭方到主动关闭方的数据传送，也就是告诉主动关闭方，被动关闭方的数据也发送完了，不会再给主动关闭方发送数据了。</li>
-<li><strong>第四次挥手</strong>：主动关闭方收到FIN后，给被动关闭方发送一个ACK，确认序号为收到序号+1，至此，完成四次握手。</li>
-</ul>
-<h3 id="五、渲染页面"><a href="#五、渲染页面" class="headerlink" title="五、渲染页面"></a>五、渲染页面</h3><h5 id="简版"><a href="#简版" class="headerlink" title="简版"></a><strong>简版</strong></h5><p>对于浏览器根据服务端返回的静态资源，浏览器使用 Native GUI 引擎渲染 HTML 和 CSS ；使用 JS 引擎加载 JS 。</p>
-<p>因为 html 是一个树形结构，浏览器根据这个 html 来构建 DOM 树，在 dom 树的构建过程中如果遇到 JS 脚本和外部 JS 连接，则会停止构建 DOM 树来执行和下载 相应的代码，这会造成阻塞，这就是为什么推荐 JS 代码应该放在 html 代码的后面，之 后根据外部样式，内部样式，</p>
-<p><strong>内联样式构建一个 CSS 对象模型树 CSSOM 树，构建完成 后和 DOM 树合并为渲染树，这里主要做的是排除非视觉节点，比如 script，meta 标签和 排除 display 为 none 的节点，之后进行布局，布局主要是确定各个元素的位置和尺寸，之后是渲染页面，因为 html 文件中会含有图片，视频，音频等资源，在解析 DOM 的过 程中，遇到这些都会进行并行下载，浏览器对每个域的并行下载数量有一定的限制，一 般是 4-6 个，当然在这些所有的请求中我们还需要关注的就是缓存</strong></p>
-<h5 id="详细版"><a href="#详细版" class="headerlink" title="详细版"></a>详细版</h5><h6 id="1、构建DOM树"><a href="#1、构建DOM树" class="headerlink" title="1、构建DOM树"></a>1、构建DOM树</h6><p>在DOM树的构建过程中如果遇到JS脚本和外部JS连接，则会停止构建DOM树来执行和下载相应的代码，这会造成阻塞，这就是为什么推荐JS代码应该放在html代码的后面。</p>
-<p>从 HTML 字节码到 DOM 树结构的流程：字节(Bytes) =### 字符串(Characters) =### Tokens =### 节点(Nodes) =### DOM</p>
-<p>计算机只能识别0和1的字节，根据字节的编码规则将字节转换成字符串，再将字符串转化为 W3C 定义的各种标签，生成 tokens（令牌），匹配字符串，将 tokens 按照规则转换为包含属性和规则的节点对象（nodes）,根据每个节点的层次关系（父子节点关系）和规则转换为直观的树形结构。HTML 是增量构建的，在 HTML 文件还在传输时，这个转换过程就已经开始了。最终得到完整的 DOM(Document Object Module文档对象模型)</p>
-<h6 id="2、将-CSS-解析成-CSSOM-规则树"><a href="#2、将-CSS-解析成-CSSOM-规则树" class="headerlink" title="2、将 CSS 解析成 CSSOM 规则树"></a>2、将 CSS 解析成 CSSOM 规则树</h6><p>这里主要做的是排除非视觉节点，比如script，meta标签和排除display为none的节点；有了Render Tree，浏览器已经能知道网页中有哪些节点、各个节点的CSS定义以及他们的从属关系</p>
-<p>CSS 构建的过程跟 DOM 差不多，只不过 CSS 会涉及到复杂的计算，如 CSS 的属性来源，匹配不同的类（id 或者 class）,确认复写规则及权重，最后确定每个节点的样式值，形成 CSSOM(CSS Object Module CSS对象模型)。</p>
-<p>还有要注意的是，每个浏览器都有自己默认的样式表，因此很多时候这棵CSSOM树只是对这张默认样式表的部分替换。</p>
-<h6 id="3、将-DOM-与-CSSOM-组合成-Render-tree（渲染树）"><a href="#3、将-DOM-与-CSSOM-组合成-Render-tree（渲染树）" class="headerlink" title="3、将 DOM 与 CSSOM 组合成 Render-tree（渲染树）"></a>3、将 DOM 与 CSSOM 组合成 Render-tree（渲染树）</h6><p>DOM树从根节点开始遍历<strong>可见</strong>节点，这里之所以强调了“可见”，是因为如果遇到设置了类似 <code>display:none;</code>的不可见节点，在render过程中是会被跳过的（但 <code>visibility:hidden;opacity:0</code>这种仍旧占据空间的节点不会被跳过render），保存各个节点的样式信息及其余节点的从属关系。</p>
-<h6 id="4、布局："><a href="#4、布局：" class="headerlink" title="4、布局："></a>4、布局：</h6><p>有了各个节点的样式信息和属性，但不知道各个节点的确切位置和大小，所以要通过布局将样式信息和属性转换为实际可视窗口的相对大小和位置。</p>
-<h6 id="5、-绘制："><a href="#5、-绘制：" class="headerlink" title="5、 绘制："></a>5、 绘制：</h6><p>即遍历render树，万事俱备，最后只要将确定好位置大小的各节点，通过GPU渲染到屏幕的实际像素。</p>
-<h6 id="6、-Tips"><a href="#6、-Tips" class="headerlink" title="6、 Tips"></a>6、 Tips</h6><ul>
-<li>在上述渲染过程中，前3点可能要多次执行，比如js脚本去操作dom、更改css样式时，浏览器又要重新构建DOM、CSSOM树，重新render，重新layout、paint；</li>
-<li>Layout在Paint之前，因此每次Layout重新布局（reflow 回流）后都要重新出发Paint渲染，这时又要去消耗GPU；</li>
-<li>Paint不一定会触发Layout，比如改个颜色改个背景；（repaint 重绘）</li>
-<li>图片下载完也会重新出发Layout和Paint；</li>
-</ul>
-<h3 id="六、加载-JavaScript-脚本"><a href="#六、加载-JavaScript-脚本" class="headerlink" title="六、加载 JavaScript 脚本"></a>六、加载 JavaScript 脚本</h3><p>虽然 HTML\CSS 与 JS 是通过不同的引擎加载，但是却是互斥的，即加载 HTML\CSS 时，JS 会停止加载，相反亦然，这是因为 JS 引擎可以操作 DOM，改变样式、内容等。所以当执行了 JS 之后，渲染树要重新构建。</p>
-<p><strong>缓存一般通过 Cache-Control、Last-Modify、Expires 等首部字段控制。 Cache-Control 和 Expires 的区别 在于 Cache-Control 使用相对时间，Expires 使用的是基于服务器 端的绝对时间，因为存 在时差问题，一般采用 Cache-Control，在请求这些有设置了缓存的数据时，会先 查看 是否过期，如果没有过期则直接使用本地缓存，过期则请求并在服务器校验文件是否修 改，如果上一次 响应设置了 ETag 值会在这次请求的时候作为 If-None-Match 的值交给 服务器校验，如果一致，继续校验 Last-Modified，没有设置 ETag 则直接验证 Last-Modified，再决定是否返回 304。</strong></p>
-<h3 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h3><p>DNS 解析</p>
-<p>TCP 连接</p>
-<p>发送 HTTP 请求</p>
-<p>服务器处理请求并返回 HTTP 报文</p>
-<p>浏览器解析渲染页面</p>
-<p>连接结束</p>
-<h3 id="八-延伸-操作DOM的成本"><a href="#八-延伸-操作DOM的成本" class="headerlink" title="八:延伸:操作DOM的成本"></a>八:延伸:操作DOM的成本</h3><h4 id="何时触发reflow和repaint"><a href="#何时触发reflow和repaint" class="headerlink" title="何时触发reflow和repaint"></a>何时触发reflow和repaint</h4><p>reflow(回流): 根据Render Tree布局(几何属性)，意味着元素的内容、结构、位置或尺寸发生了变化，需要重新计算样式和渲染树；</p>
-<p>repaint(重绘): 意味着元素发生的改变只影响了节点的一些样式（背景色，边框颜色，文字颜色等），只需要应用新样式绘制这个元素就可以了；</p>
-<p>reflow回流的成本开销要高于repaint重绘，一个节点的回流往往回导致子节点以及同级节点的回流；</p>
-<p>GoogleChromeLabs 里面有一个csstriggers，列出了各个CSS属性对浏览器执行Layout、Paint、Composite的影响。</p>
-<h5 id="引起reflow回流"><a href="#引起reflow回流" class="headerlink" title="引起reflow回流"></a>引起reflow回流</h5><p>**</p>
-<ol>
-<li>页面第一次渲染（初始化）</li>
-<li>DOM树变化（如：增删节点）</li>
-<li>Render树变化（如：padding改变）</li>
-<li>浏览器窗口resize</li>
-<li>获取元素的某些属性：</li>
-</ol>
-<p>浏览器为了获得**<u>(读)</u><strong>正确的值也会</strong>提前触发回流**，这样就使得浏览器的优化失效了，这些属性包括offsetLeft、offsetTop、offsetWidth、offsetHeight、 scrollTop/Left/Width/Height、clientTop/Left/Width/Height、调用了getComputedStyle()或者IE的currentStyle</p>
-<p>现代浏览器会对回流做优化，它会等到足够数量的变化发生，再做一次批处理回流。例如：</p>
-<p>假如我要用js修改某个div的样式</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">div.style.left = &#x27;10px&#x27;;</span><br><span class="line">div.style.top = &#x27;10px&#x27;;</span><br><span class="line">div.style.width = &#x27;10px&#x27;;</span><br><span class="line">div.style.height = &#x27;10px&#x27;;</span><br></pre></td></tr></table></figure>
+    <p>title: html中head里的meta标签的用法<br>date: 2021-04-23 20:42:20<br>tags:</p>
+<p>meta标签分两大部分：HTTP-EQUIV和NAME变量。</p>
+<span id="more"></span>
 
-<p>我们修改了元素的left、top、width、height属性 ,满足我们发生重排的条件 ,<strong>理论上会发生4次重排 ,但是实际上只会发生1次重排</strong> ,因为我们现代的浏览器都有渲染队列的机制 ,当我改变了元素的一个样式会导致浏览器发生重排或重绘时 ,它会进入一个<strong>渲染队列</strong> ,然后浏览器继续往下看，如果下面还有样式修改 ,那么同样入队 ,直到下面没有样式修改 ,浏览器会按照渲染队列批量执行来优化重排过程，一并修改样式 ,这样就把本该4次的重排优化为1次</p>
-<p>But,当我们写如下代码时：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">div.style.left = &#x27;10px&#x27;;</span><br><span class="line">console.log(div.offsetLeft);</span><br><span class="line"></span><br><span class="line">div.style.top = &#x27;10px&#x27;;</span><br><span class="line">console.log(div.offsetTop);</span><br><span class="line"></span><br><span class="line">div.style.width = &#x27;20px&#x27;;</span><br><span class="line">console.log(div.offsetWidth);</span><br><span class="line"></span><br><span class="line">div.style.height = &#x27;20px&#x27;;</span><br><span class="line">console.log(div.offsetHeight);</span><br></pre></td></tr></table></figure>
-
-<p>还是1次重排吗？</p>
-<p>Obviously not! **此时发生了4次重排！</p>
-<h5 id="引起repaint重绘"><a href="#引起repaint重绘" class="headerlink" title="引起repaint重绘"></a>引起repaint重绘</h5><ol>
-<li>reflow回流必定引起repaint重绘，重绘可以单独触发</li>
-<li>背景色、颜色、字体改变（注意：字体大小发生变化时，会触发回流）</li>
-</ol>
-<h5 id="优化reflow、repaint触发次数"><a href="#优化reflow、repaint触发次数" class="headerlink" title="优化reflow、repaint触发次数"></a>优化reflow、repaint触发次数</h5><ul>
-<li>避免逐个修改节点样式，尽量一次性修改,对古董浏览器有效</li>
-<li>使用DocumentFragment将需要多次修改的DOM元素缓存，最后一次性append到真实DOM中渲染</li>
-<li>可以将需要多次修改的DOM元素设置 <code>display:none</code>，操作完再显示。（因为隐藏元素不在render树内，因此修改隐藏元素不会触发回流重绘）</li>
-<li>避免多次读取某些属性（见上）</li>
-<li>将复杂的节点元素脱离文档流，降低回流成本(浮动和定位)</li>
-</ul>
-<h5 id="为什么一再强调将css放在头部，将js文件放在尾部"><a href="#为什么一再强调将css放在头部，将js文件放在尾部" class="headerlink" title="为什么一再强调将css放在头部，将js文件放在尾部"></a>为什么一再强调将css放在头部，将js文件放在尾部</h5><h5 id="DOMContentLoaded-和-load"><a href="#DOMContentLoaded-和-load" class="headerlink" title="DOMContentLoaded 和 load"></a>DOMContentLoaded 和 load</h5><ul>
-<li>DOMContentLoaded 事件触发时，仅当DOM加载完成，不包括样式表，图片…</li>
-<li>load 事件触发时，页面上所有的DOM，样式表，脚本，图片都已加载完成</li>
-</ul>
-<h5 id="CSS-资源阻塞渲染"><a href="#CSS-资源阻塞渲染" class="headerlink" title="CSS 资源阻塞渲染"></a>CSS 资源阻塞渲染</h5><p>构建Render树需要DOM和CSSOM，所以HTML和CSS都会阻塞渲染。所以需要让CSS尽早加载（如：放在头部），以缩短首次渲染的时间。</p>
-<h5 id="JS-资源"><a href="#JS-资源" class="headerlink" title="JS 资源"></a>JS 资源</h5><p>阻塞浏览器的解析，也就是说发现一个外链脚本时，需等待脚本下载完成并执行后才会继续解析HTML。</p>
-<p>这和之前文章提到的浏览器线程有关，浏览器中js引擎线程和渲染线程是互斥的，详见《从setTimeout-setInterval看JS线程》</p>
-<p>普通的脚本会阻塞浏览器解析，加上defer或async属性，脚本就变成异步，可等到解析完毕再执行。</p>
-<ul>
-<li>async异步执行，异步下载完毕后就会执行，不确保执行顺序，一定在onload前，但不确定在DOMContentLoaded事件的前后</li>
-<li>defer延迟执行，相对于放在body最后（理论上在DOMContentLoaded事件前）</li>
-</ul>
-<h5 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;  &lt;head&gt;    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width,initial-scale&#x3D;1&quot;&gt;    &lt;link href&#x3D;&quot;style.css&quot; rel&#x3D;&quot;stylesheet&quot;&gt;  &lt;&#x2F;head&gt;  &lt;body&gt;    &lt;p&gt;Hello &lt;span&gt;web performance&lt;&#x2F;span&gt; students!&lt;&#x2F;p&gt;    &lt;div&gt;&lt;img src&#x3D;&quot;awesome-photo.jpg&quot;&gt;&lt;&#x2F;div&gt;    &lt;script src&#x3D;&quot;app.js&quot;&gt;&lt;&#x2F;script&gt;  &lt;&#x2F;body&gt;&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/aVp1YC8UV0elY5J3ByiaACdNibia22r5uZ291pgkbO5sR1KClapaJhKNTqy6IdiagRial4RwyIzpPUy1iaYiabqHS9Z7w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<ul>
-<li>浏览器拿到HTML后，从上到下顺序解析文档</li>
-<li>此时遇到css、js外链，则同时发起请求</li>
-<li>开始构建DOM树</li>
-<li>这里要特别注意，由于有CSS资源，CSSOM还未构建前，会阻塞js（如果有的话）</li>
-<li>无论JavaScript是内联还是外链，只要浏览器遇到 <code>script</code> 标记，唤醒 <code>JavaScript解析器</code>，就会进行暂停 <code>blocked</code> 浏览器解析HTML，并等到 <code>CSSOM</code> 构建完毕，才执行js脚本</li>
-<li>渲染首屏（DOMContentLoaded 触发，其实不一定是首屏，可能在js脚本执行前DOM树和CSSOM已经构建完render树，已经paint）</li>
-</ul>
-<h4 id="首屏优化Tips"><a href="#首屏优化Tips" class="headerlink" title="首屏优化Tips"></a>首屏优化Tips</h4><p>说了这么多，其实可以总结几点浏览器首屏渲染优化的方向：</p>
-<ul>
-<li>减少资源请求数量（内联亦或是延迟动态加载）</li>
-<li>使CSS样式表尽早加载，减少@import的使用，因为需要解析完样式表中所有import的资源才会算CSS资源下载完</li>
-<li>异步js：阻塞解析器的 JavaScript 会强制浏览器等待 CSSOM 并暂停 DOM 的构建，导致首次渲染的时间延迟</li>
-<li>so on…</li>
-</ul>
-<h4 id="知道操作DOM成本多高了吗"><a href="#知道操作DOM成本多高了吗" class="headerlink" title="知道操作DOM成本多高了吗?"></a>知道操作DOM成本多高了吗?</h4><p>其实写了这么多，感觉偏题了，大量的资料参考的是chrome开发者文档。感觉js脚本资源那块还是有点乱，包括和DOMContentLoaded的关系，希望大家能多多指点，多多批评，谢谢大佬们。</p>
-<p>操作DOM具体的成本，说到底是造成浏览器回流reflow和重绘reflow，从而消耗GPU资源。</p>
-<h4 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h4><ul>
-<li><a target="_blank" rel="noopener" href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/">https://developers.google.com/web/fundamentals/performance/critical-rendering-path/</a></li>
-</ul>
-<h4 id="最后一道字节面试题"><a href="#最后一道字节面试题" class="headerlink" title="最后一道字节面试题"></a>最后一道字节面试题</h4><p><img src="https://pic2.zhimg.com/v2-9b4d80c0a3226a17a360178a3527d9b9_r.jpg" alt="img"></p>
+<p>●HTTP-EQUIV类似于HTTP的头部协议，它回应给浏览器一些有用的信息，以帮助正确和精确<br>地显示网页内容。常用的HTTP-EQUIV类型有：</p>
+<p>1.expires(期限)<br>说明：可以用于设定网页的到期时间。一旦网页过期，必须到服务器上重新调阅。<br>用法：<META http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT"><br>注意：必须使用GMT的时间格式。</META></p>
+<p>2.Pragma(cach模式)<br>说明：禁止浏览器从本地机的缓存中调阅页面内容。<br>用法：<META http-equiv="Pragma" content="no-cache"><br>注意：这样设定，访问者将无法脱机浏览。</META></p>
+<p>3.Refresh(刷新)<br>说明：需要定时让网页自动链接到其它网页的话，就用这句了。<br>用法：<META http-equiv="Refresh" content="5;URL= [http://www.yahoo.com](http://www.yahoo.com/)"><br>注意：其中的5是指停留5秒钟后自动刷新到URL网址。</META></p>
+<p>4.Set-Cookie(cookie设定)<br>说明：如果网页过期，那么存盘的cookie将被删除。<br>用法：<META http-equiv="Set-Cookie" content="cookievalue=xxx;
+expires=Wednesday, 21-Oct-98 16:14:21 GMT; path=/"><br>注意：必须使用GMT的时间格式。</META></p>
+<p>5.Window-target(显示窗口的设定)<br>说明：强制页面在当前窗口以独立页面显示。<br>用法：<META http-equiv="Window-target" content="_top"><br>注意：用来防止别人在框架里调用你的页面。</META></p>
+<p>5.Content-Type(显示字符集的设定)<br>说明：设定页面使用的字符集。</p>
+<p>用法：<meta http-equiv="Content-Type" content="text/html; charset=gb2312"></p>
+<p>●meat标签的NAME变量语法格式是：<br><META name="xxx" content="xxxxxxxxxxxxxxxxxx"><br>其中xxx主要有下面几种参数：</META></p>
+<p>1.Keywords(关键字)<br>说明：keywords用来告诉搜索引擎你网页的关键字是什么。<br>举例：<META name="keywords" content="life, universe, mankind, plants,
+relationships, the meaning of life, science"></META></p>
+<p>2.description(简介)<br>说明：description用来告诉搜索引擎你的网站主要内容。<br>举例：<META name="description" content="This page is about the meaning of
+life, the universe, mankind and plants."></META></p>
+<p>3.robots(机器人向导)<br>说明：robots用来告诉搜索机器人哪些页面需要索引，哪些页面不需要索引。<br>CONTENT的参数有all,none,index,noindex,follow,nofollow。默认是all。<br>举例：<META name="robots" content="none"></META></p>
+<p>4.author(作者)<br>说明：标注网页的作者<br>举例：<META name="AUTHOR" content="ajie,ajie@netease.com"></META></p>
+<p>以上是meta标签的一些基本用法，其中最重要的就是:Keywords和description的设定。</p>
+<p>为什么呢？道理很简单，这两个语句可以让搜索引擎能准确的发现你，吸引更多的人访问<br>你的站点!</p>
+<p>根据现在流行搜索引擎(Lycos，AltaVista等)的工作原理,搜索引擎首先派出机器人自动<br>在www上搜索，当发现新的网站时，便检索页面中的keywords和decription，并将其加入到自<br>己的数据库，然后再根据关键词的密度将网站排序。</p>
+<p>也就是说：<br>\1. 如果你的页面中根本没有Keywords和description的meta标签，那么机器人是<br>无法将你的站点加入数据库，网友也就不可能搜索到你的站点。</p>
+<p>\2. 如果你的关键字选的不好，关键字的密度不高，被排列在几十甚至几百万个站点的后面<br>被点击的可能性也是非常小的。</p>
 
     
 
@@ -365,7 +267,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://helishou.github.io/2021/04/24/一个url请求/" title="" target="_blank">https://helishou.github.io/2021/04/24/一个url请求/</a>
+          <a href="https://helishou.github.io/2021/04/28/html的头部信息/" title="" target="_blank">https://helishou.github.io/2021/04/28/html的头部信息/</a>
         </li>
         
         <li>
@@ -432,7 +334,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://helishou.github.io/2021/04/24/%E4%B8%80%E4%B8%AAurl%E8%AF%B7%E6%B1%82/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://helishou.github.io/2021/04/28/html%E7%9A%84%E5%A4%B4%E9%83%A8%E4%BF%A1%E6%81%AF/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -447,7 +349,7 @@
 
 <nav id="article-nav">
   
-    <a href="/2021/04/24/FC%E6%A0%BC%E5%BC%8F%E4%B8%8A%E4%B8%8B%E6%96%87/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/05/06/react%E8%BE%B9%E8%A7%92%E6%96%99/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -457,7 +359,7 @@
     </a>
   
   
-    <a href="/2021/04/24/flex%E5%B8%83%E5%B1%80/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/04/27/Vue3%E4%B8%8EReact%E7%9A%84%E5%8C%BA%E5%88%AB/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title"></div>
       <i class="icon-circle-right"></i>
     </a>
@@ -485,7 +387,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81DNS%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">一、DNS域名解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%BB%BA%E7%AB%8BTCP%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.</span> <span class="toc-text">二、建立TCP连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE"><span class="toc-number">3.</span> <span class="toc-text">三、传输数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%85%B3%E9%97%ADTCP%E8%BF%9E%E6%8E%A5"><span class="toc-number">4.</span> <span class="toc-text">四、关闭TCP连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%B8%B2%E6%9F%93%E9%A1%B5%E9%9D%A2"><span class="toc-number">5.</span> <span class="toc-text">五、渲染页面</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AE%80%E7%89%88"><span class="toc-number">5.0.1.</span> <span class="toc-text">简版</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E7%89%88"><span class="toc-number">5.0.2.</span> <span class="toc-text">详细版</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%E3%80%81%E6%9E%84%E5%BB%BADOM%E6%A0%91"><span class="toc-number">5.0.2.1.</span> <span class="toc-text">1、构建DOM树</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%E3%80%81%E5%B0%86-CSS-%E8%A7%A3%E6%9E%90%E6%88%90-CSSOM-%E8%A7%84%E5%88%99%E6%A0%91"><span class="toc-number">5.0.2.2.</span> <span class="toc-text">2、将 CSS 解析成 CSSOM 规则树</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%E3%80%81%E5%B0%86-DOM-%E4%B8%8E-CSSOM-%E7%BB%84%E5%90%88%E6%88%90-Render-tree%EF%BC%88%E6%B8%B2%E6%9F%93%E6%A0%91%EF%BC%89"><span class="toc-number">5.0.2.3.</span> <span class="toc-text">3、将 DOM 与 CSSOM 组合成 Render-tree（渲染树）</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4%E3%80%81%E5%B8%83%E5%B1%80%EF%BC%9A"><span class="toc-number">5.0.2.4.</span> <span class="toc-text">4、布局：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5%E3%80%81-%E7%BB%98%E5%88%B6%EF%BC%9A"><span class="toc-number">5.0.2.5.</span> <span class="toc-text">5、 绘制：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#6%E3%80%81-Tips"><span class="toc-number">5.0.2.6.</span> <span class="toc-text">6、 Tips</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%8A%A0%E8%BD%BD-JavaScript-%E8%84%9A%E6%9C%AC"><span class="toc-number">6.</span> <span class="toc-text">六、加载 JavaScript 脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-number">7.</span> <span class="toc-text">七、总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AB-%E5%BB%B6%E4%BC%B8-%E6%93%8D%E4%BD%9CDOM%E7%9A%84%E6%88%90%E6%9C%AC"><span class="toc-number">8.</span> <span class="toc-text">八:延伸:操作DOM的成本</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%95%E6%97%B6%E8%A7%A6%E5%8F%91reflow%E5%92%8Crepaint"><span class="toc-number">8.1.</span> <span class="toc-text">何时触发reflow和repaint</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BC%95%E8%B5%B7reflow%E5%9B%9E%E6%B5%81"><span class="toc-number">8.1.1.</span> <span class="toc-text">引起reflow回流</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BC%95%E8%B5%B7repaint%E9%87%8D%E7%BB%98"><span class="toc-number">8.1.2.</span> <span class="toc-text">引起repaint重绘</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E5%8C%96reflow%E3%80%81repaint%E8%A7%A6%E5%8F%91%E6%AC%A1%E6%95%B0"><span class="toc-number">8.1.3.</span> <span class="toc-text">优化reflow、repaint触发次数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%80%E5%86%8D%E5%BC%BA%E8%B0%83%E5%B0%86css%E6%94%BE%E5%9C%A8%E5%A4%B4%E9%83%A8%EF%BC%8C%E5%B0%86js%E6%96%87%E4%BB%B6%E6%94%BE%E5%9C%A8%E5%B0%BE%E9%83%A8"><span class="toc-number">8.1.4.</span> <span class="toc-text">为什么一再强调将css放在头部，将js文件放在尾部</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#DOMContentLoaded-%E5%92%8C-load"><span class="toc-number">8.1.5.</span> <span class="toc-text">DOMContentLoaded 和 load</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#CSS-%E8%B5%84%E6%BA%90%E9%98%BB%E5%A1%9E%E6%B8%B2%E6%9F%93"><span class="toc-number">8.1.6.</span> <span class="toc-text">CSS 资源阻塞渲染</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#JS-%E8%B5%84%E6%BA%90"><span class="toc-number">8.1.7.</span> <span class="toc-text">JS 资源</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BE%E4%B8%AA%E6%A0%97%E5%AD%90"><span class="toc-number">8.1.8.</span> <span class="toc-text">举个栗子</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A6%96%E5%B1%8F%E4%BC%98%E5%8C%96Tips"><span class="toc-number">8.2.</span> <span class="toc-text">首屏优化Tips</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9F%A5%E9%81%93%E6%93%8D%E4%BD%9CDOM%E6%88%90%E6%9C%AC%E5%A4%9A%E9%AB%98%E4%BA%86%E5%90%97"><span class="toc-number">8.3.</span> <span class="toc-text">知道操作DOM成本多高了吗?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">8.4.</span> <span class="toc-text">参考文献</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E5%90%8E%E4%B8%80%E9%81%93%E5%AD%97%E8%8A%82%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-number">8.5.</span> <span class="toc-text">最后一道字节面试题</span></a></li></ol></li></ol>
+                    目录，不存在的…
                     </div>
                 </span>
             </div>
